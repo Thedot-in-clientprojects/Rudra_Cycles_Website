@@ -6,6 +6,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+import Dashboard from "./admin/Dashboard/Dashboard";
 
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
@@ -420,6 +421,12 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/not-found"}
                   component={NotFound}
+                />
+
+                {/* Admin Panel */}
+                <Route
+                  path={process.env.PUBLIC_URL + "/admin"}
+                  component={Dashboard}
                 />
 
                 <Route exact component={NotFound} />
