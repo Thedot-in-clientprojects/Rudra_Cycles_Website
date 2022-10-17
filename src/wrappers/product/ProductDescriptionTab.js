@@ -27,23 +27,22 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                 <div className="product-anotherinfo-wrapper">
                   <ul>
                     <li>
-                      <span>Weight</span> 400 g
+                      <span>Weight</span> {productFullDesc.weight}
                     </li>
                     <li>
-                      <span>Dimensions</span>10 x 10 x 15 cm{" "}
+                      <span>Dimensions</span>{productFullDesc.dimensions}{" "}
                     </li>
                     <li>
-                      <span>Materials</span> 60% cotton, 40% polyester
+                      <span>Materials</span> {productFullDesc.materials}
                     </li>
                     <li>
-                      <span>Other Info</span> American heirloom jean shorts pug
-                      seitan letterpress
+                      <span>Other Info</span> {productFullDesc.overview}
                     </li>
                   </ul>
                 </div>
               </Tab.Pane>
               <Tab.Pane eventKey="productDescription">
-                {productFullDesc}
+                {productFullDesc.description}
               </Tab.Pane>
               <Tab.Pane eventKey="productReviews">
                 <div className="row">
@@ -79,10 +78,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                           </div>
                           <div className="review-bottom">
                             <p>
-                              Vestibulum ante ipsum primis aucibus orci
-                              luctustrices posuere cubilia Curae Suspendisse
-                              viverra ed viverra. Mauris ullarper euismod
-                              vehicula. Phasellus quam nisi, congue id nulla.
+                              {productFullDesc.overview}
                             </p>
                           </div>
                         </div>
@@ -178,9 +174,9 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
   );
 };
 
-ProductDescriptionTab.propTypes = {
-  productFullDesc: PropTypes.string,
-  spaceBottomClass: PropTypes.string
-};
+// ProductDescriptionTab.propTypes = {
+//   productFullDesc: PropTypes.string,
+//   spaceBottomClass: PropTypes.string
+// };
 
 export default ProductDescriptionTab;

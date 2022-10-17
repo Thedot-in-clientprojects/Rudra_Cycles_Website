@@ -22,40 +22,42 @@ const ProductDescriptionInfo = ({
   addToWishlist,
   addToCompare
 }) => {
-  const [selectedProductColor, setSelectedProductColor] = useState(
-    product.variation ? product.variation[0].color : ""
-  );
-  const [selectedProductSize, setSelectedProductSize] = useState(
-    product.variation ? product.variation[0].size[0].name : ""
-  );
-  const [productStock, setProductStock] = useState(
-    product.variation ? product.variation[0].size[0].stock : product.stock
-  );
-  const [quantityCount, setQuantityCount] = useState(1);
+  // const [selectedProductColor, setSelectedProductColor] = useState(
+  //   product.variation ? product.variation[0].color : ""
+  // );
+  // const [selectedProductSize, setSelectedProductSize] = useState(
+  //   product.variation ? product.variation[0].size[0].name : ""
+  // );
+  // const [productStock, setProductStock] = useState(
+  //   product.variation ? product.variation[0].size[0].stock : product.stock
+  // );
+  // const [quantityCount, setQuantityCount] = useState(1);
 
-  const productCartQty = getProductCartQuantity(
-    cartItems,
-    product,
-    selectedProductColor,
-    selectedProductSize
-  );
+  // const productCartQty = getProductCartQuantity(
+  //   cartItems,
+  //   product,
+  //   selectedProductColor,
+  //   selectedProductSize
+  // );
 
   return (
     <div className="product-details-content ml-70">
-      <h2>{product.name}</h2>
+      <h2>
+        {product.name}
+      </h2>
       <div className="product-details-price">
-        {discountedPrice !== null ? (
+        {product.disPrice !== null ? (
           <Fragment>
-            <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+            <span>{'₹' + product.disPrice}</span>{" "}
             <span className="old">
-              {currency.currencySymbol + finalProductPrice}
+              {'₹' + product.disPrice}
             </span>
           </Fragment>
         ) : (
-          <span>{currency.currencySymbol + finalProductPrice} </span>
+          <span>{'₹' + product.disPrice} </span>
         )}
       </div>
-      {product.rating && product.rating > 0 ? (
+       {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
           <div className="pro-details-rating">
             <Rating ratingValue={product.rating} />
@@ -64,10 +66,13 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
-      <div className="pro-details-list">
-        <p>{product.shortDescription}</p>
+     <div className="pro-details-list">
+        <p>{product.description}</p>
       </div>
-
+     <div className="pro-details-list">
+        <p>{product.overview}</p>
+      </div>
+ {/*
       {product.variation ? (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
@@ -95,8 +100,8 @@ const ProductDescriptionInfo = ({
                     />
                     <span className="checkmark"></span>
                   </label>
-                );
-              })}
+              //   );
+              // })}
             </div>
           </div>
           <div className="pro-details-size">
@@ -137,6 +142,66 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
+      */}
+      <div className="pro-details-quality">
+          <div className="pro-details-cart btn-hover ml-0">
+            <a
+              href={product.affiliateLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Buy Throught WhatsApp
+            </a>
+          </div>
+        </div>
+      <div className="pro-details-quality">
+          <div className="pro-details-cart btn-hover ml-0">
+            <a
+              href={product.affiliateLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Buy Here
+            </a>
+          </div>
+        </div>
+        {product.category ? (
+        <div className="pro-details-meta">
+          <span>Categories :</span>
+          <ul>
+            {product.category.map((single, key) => {
+              return (
+                <li key={key}>
+                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    {single}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
+      {product.tag ? (
+        <div className="pro-details-meta">
+          <span>Tags :</span>
+          <ul>
+            {product.tag.map((single, key) => {
+              return (
+                <li key={key}>
+                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    {single}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
+      {/*
       {product.affiliateLink ? (
         <div className="pro-details-quality">
           <div className="pro-details-cart btn-hover ml-0">
@@ -295,52 +360,53 @@ const ProductDescriptionInfo = ({
             </a>
           </li>
         </ul>
-      </div>
+      </div> */} 
     </div>
   );
 };
 
-ProductDescriptionInfo.propTypes = {
-  addToCart: PropTypes.func,
-  addToCompare: PropTypes.func,
-  addToWishlist: PropTypes.func,
-  addToast: PropTypes.func,
-  cartItems: PropTypes.array,
-  compareItem: PropTypes.array,
-  currency: PropTypes.object,
-  discountedPrice: PropTypes.number,
-  finalDiscountedPrice: PropTypes.number,
-  finalProductPrice: PropTypes.number,
-  product: PropTypes.object,
-  wishlistItem: PropTypes.object
-};
+// ProductDescriptionInfo.propTypes = {
+//   addToCart: PropTypes.func,
+//   addToCompare: PropTypes.func,
+//   addToWishlist: PropTypes.func,
+//   addToast: PropTypes.func,
+//   cartItems: PropTypes.array,
+//   compareItem: PropTypes.array,
+//   currency: PropTypes.object,
+//   discountedPrice: PropTypes.number,
+//   finalDiscountedPrice: PropTypes.number,
+//   finalProductPrice: PropTypes.number,
+//   product: PropTypes.object,
+//   wishlistItem: PropTypes.object
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToCart: (
-      item,
-      addToast,
-      quantityCount,
-      selectedProductColor,
-      selectedProductSize
-    ) => {
-      dispatch(
-        addToCart(
-          item,
-          addToast,
-          quantityCount,
-          selectedProductColor,
-          selectedProductSize
-        )
-      );
-    },
-    addToWishlist: (item, addToast) => {
-      dispatch(addToWishlist(item, addToast));
-    },
-    addToCompare: (item, addToast) => {
-      dispatch(addToCompare(item, addToast));
-    }
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addToCart: (
+//       item,
+//       addToast,
+//       quantityCount,
+//       selectedProductColor,
+//       selectedProductSize
+//     ) => {
+//       dispatch(
+//         addToCart(
+//           item,
+//           addToast,
+//           quantityCount,
+//           selectedProductColor,
+//           selectedProductSize
+//         )
+//       );
+//     },
+//     addToWishlist: (item, addToast) => {
+//       dispatch(addToWishlist(item, addToast));
+//     },
+//     addToCompare: (item, addToast) => {
+//       dispatch(addToCompare(item, addToast));
+//     }
+//   };
+// };
 
-export default connect(null, mapDispatchToProps)(ProductDescriptionInfo);
+// export default connect(null, mapDispatchToProps)(ProductDescriptionInfo);
+export default ProductDescriptionInfo

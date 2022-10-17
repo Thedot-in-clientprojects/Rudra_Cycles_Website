@@ -6,6 +6,7 @@ import ProductGridSingle from "../../components/product/ProductGridSingle";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
+import { productData } from "../../data-helper/product";
 
 const ProductGrid = ({
   products,
@@ -21,7 +22,40 @@ const ProductGrid = ({
 }) => {
   return (
     <Fragment>
-      {products.map(product => {
+      {productData && productData.map((pd, index) => {
+        return(
+          <>
+          <ProductGridSingle
+            // sliderClassName={sliderClassName}
+            // spaceBottomClass={spaceBottomClass}
+            product={pd}
+            // currency={currency}
+            // addToCart={addToCart}
+            // addToWishlist={addToWishlist}
+            // addToCompare={addToCompare}
+            // cartItem={
+            //   cartItems.filter(cartItem => cartItem.id === product.id)[0]
+            // }
+            // wishlistItem={
+            //   wishlistItems.filter(
+            //     wishlistItem => wishlistItem.id === product.id
+            //   )[0]
+            // }
+            // compareItem={
+            //   compareItems.filter(
+            //     compareItem => compareItem.id === product.id
+            //   )[0]
+            // }
+            key={pd.id}
+          />
+          {
+            console.log('Cycle - ', pd)
+          }
+          </>
+        )
+      })
+      }
+      {/* {products.map(product => {
         return (
           <ProductGridSingle
             sliderClassName={sliderClassName}
@@ -47,7 +81,7 @@ const ProductGrid = ({
             key={product.id}
           />
         );
-      })}
+      })} */}
     </Fragment>
   );
 };

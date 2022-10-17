@@ -389,6 +389,10 @@ const App = (props) => {
                   component={About}
                 />
                 <Route
+                  path={process.env.PUBLIC_URL + "/product/:id"}
+                  component={Product}
+                />
+                <Route
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
                 />
