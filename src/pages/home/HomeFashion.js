@@ -5,6 +5,8 @@ import HeroSliderOne from "../../wrappers/hero-slider/HeroSliderOne";
 import FeatureIcon from "../../wrappers/feature-icon/FeatureIcon";
 import TabProduct from "../../wrappers/product/TabProduct";
 import BlogFeatured from "../../wrappers/blog-featured/BlogFeatured";
+import Notify from "../../components/notification/Notify";
+import HeroSliderEight from "../../wrappers/hero-slider/HeroSliderEight";
 
 const HomeFashion = () => {
   return (
@@ -16,12 +18,13 @@ const HomeFashion = () => {
           content="Rudra Cycle Mart - The Top Cycle Shop In Coimbatore"
         />
       </MetaTags>
+      <Notify />
       <LayoutOne
         headerContainerClass="container-fluid"
         headerPaddingClass="header-padding-1"
       >
         {/* hero slider */}
-        <HeroSliderOne />
+        <HeroSliderEight />
 
         {/* featured icon */}
         <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" />

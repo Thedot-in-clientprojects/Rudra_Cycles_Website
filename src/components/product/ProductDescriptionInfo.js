@@ -7,6 +7,7 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
+import WhatsappButton from "../../assets/img/WhatsAppButtonGreenSmall.png"
 
 const ProductDescriptionInfo = ({
   product,
@@ -144,14 +145,8 @@ const ProductDescriptionInfo = ({
       )}
       */}
       <div className="pro-details-quality">
-          <div className="pro-details-cart btn-hover ml-0">
-            <a
-              href={product.affiliateLink}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Buy Throught WhatsApp
-            </a>
+          <div className=" ml-0">
+          <a aria-label="Chat on WhatsApp" href={`https://wa.me/919845312077`} > <img className="wa-button-img" src={WhatsappButton} /></a>
           </div>
         </div>
       <div className="pro-details-quality">
@@ -361,6 +356,8 @@ const ProductDescriptionInfo = ({
           </li>
         </ul>
       </div> */} 
+
+      
     </div>
   );
 };
