@@ -338,16 +338,16 @@ const App = (props) => {
                 />
 
                 {/* Shop product pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/product/:id"}
-                  render={(routeProps) => (
-                    <Product {...routeProps} key={routeProps.match.params.id} />
-                  )}
-                />
+                 
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
                 />
+                 
+                {/* <Route
+                  path={process.env.PUBLIC_URL + "/uploadi"}
+                  component={Upload}
+                /> */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
                   component={ProductTabRight}
