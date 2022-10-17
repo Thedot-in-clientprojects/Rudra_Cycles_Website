@@ -2,8 +2,14 @@ import React from "react";
 import Swiper from "react-id-swiper";
 import HeroSliderEightSingle from "../../components/hero-slider/HeroSliderEightSingle.js";
 import sliderData from "../../data/hero-sliders/hero-slider-eight.json";
+import Gee from "../../assets/videos/gee.mp4";
+import thumb from "../../assets/img/thumb.png"
+import Video from "react-responsive-video"
+
 
 const HeroSliderEight = () => {
+  
+
   const params = {
     effect: "fade",
     loop: true,
@@ -29,23 +35,13 @@ const HeroSliderEight = () => {
     )
   };
   return (
-    <div className="slider-area">
-      <div className="slider-active nav-style-1">
-        <Swiper {...params}>
-          {sliderData &&
-            sliderData.map((single, key) => {
-              return (
-                <HeroSliderEightSingle
-                  data={single}
-                  key={key}
-                  sliderClass="swiper-slide"
-                />
-              );
-            })}
-        </Swiper>
+    <div>
+      <div>
+      <Video webm={Gee} objectFit={`contain`} autoplay />
       </div>
     </div>
-  );
-};
+  )
 
-export default HeroSliderEight;
+}
+
+export default HeroSliderEight

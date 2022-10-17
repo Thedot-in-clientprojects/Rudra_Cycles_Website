@@ -28,7 +28,7 @@ const Contact = ({ location }) => {
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             <div className="contact-map mb-10">
-              <LocationMap latitude="47.444" longitude="-122.176" />
+              <LocationMap latitude="11.001950324065447" longitude=" 76.95111104723884" />
             </div>
             <div className="custom-row-2">
               <div className="col-lg-4 col-md-5">
@@ -38,8 +38,7 @@ const Contact = ({ location }) => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+012 345 678 102</p>
-                      <p>+012 345 678 102</p>
+                      <p>+91 9496582996</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -49,12 +48,12 @@ const Contact = ({ location }) => {
                     <div className="contact-info-dec">
                       <p>
                         <a href="mailto:yourname@email.com">
-                          yourname@email.com
+                          rudhracycles@gmail.com
                         </a>
                       </p>
                       <p>
                         <a href="https://yourwebsitename.com">
-                          yourwebsitename.com
+                          rudracyclemart.com
                         </a>
                       </p>
                     </div>
@@ -64,8 +63,8 @@ const Contact = ({ location }) => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>173A, Srinivasa Ragavan St, R.S. Puram,  </p>
+                      <p>Coimbatore, Tamil Nadu 641002,</p>
                     </div>
                   </div>
                   <div className="contact-social text-center">

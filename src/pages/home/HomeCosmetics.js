@@ -8,21 +8,24 @@ import HeroSliderEight from "../../wrappers/hero-slider/HeroSliderEight";
 import FeatureIconThree from "../../wrappers/feature-icon/FeatureIconThree";
 import BannerNine from "../../wrappers/banner/BannerNine";
 import TabProductFive from "../../wrappers/product/TabProductFive";
+import Notify from "../../components/notification/Notify";
 
 const HomeCosmetics = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Cosmetics Home</title>
+        <title>Rudra Cycles | Coimbatore</title>
         <meta
           name="description"
           content="Cosmetics home of flone react minimalist eCommerce template."
         />
       </MetaTags>
+      <Notify />
       <LayoutOne
         headerContainerClass="container-fluid"
         headerPaddingClass="header-padding-2"
       >
+
         {/* hero slider */}
         <HeroSliderEight />
         {/* tab product */}
