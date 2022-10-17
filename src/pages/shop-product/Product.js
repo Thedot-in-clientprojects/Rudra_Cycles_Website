@@ -18,7 +18,7 @@ const Product = ({ location, product }) => {
         <title>Rudra Cycle Mart | Products</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="Rudra Cycle Mart Coimbatore | "
         />
       </MetaTags>
 

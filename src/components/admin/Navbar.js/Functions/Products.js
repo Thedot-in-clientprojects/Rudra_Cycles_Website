@@ -338,6 +338,7 @@ function Products() {
     value={productCycleType}
     label="Branch"
     onChange={handleCycleType}
+    placeholder="Select the Brand"
 >
             <MenuItem value={'Brand One'}>Brand One</MenuItem>
             <MenuItem value={'Brand Two'}>Brand Two</MenuItem>
@@ -358,13 +359,14 @@ function Products() {
     value={productCycleType}
     label="Branch"
     onChange={handleCycleType}
+    placeholder="Select the Component"
 >
-            <MenuItem value={'Brand One'}>Brand One</MenuItem>
-            <MenuItem value={'Brand Two'}>Brand Two</MenuItem>
-            <MenuItem value={'Brand Three'}>Brand Three</MenuItem>
-            <MenuItem value={'Brand Four'}>Brand Four</MenuItem>
-            <MenuItem value={'Brand Five'}>Brand Five</MenuItem>
-            <MenuItem value={'Brand Six'}>Brand Six</MenuItem>
+            <MenuItem value={'Component One'}>Component One</MenuItem>
+            <MenuItem value={'Component Two'}>Component Two</MenuItem>
+            <MenuItem value={'Component Three'}>Component Three</MenuItem>
+            <MenuItem value={'Component Four'}>Component Four</MenuItem>
+            <MenuItem value={'Component Five'}>Component Five</MenuItem>
+            <MenuItem value={'Component Six'}>Component Six</MenuItem>
      
 </Select>
 </FormControl>
