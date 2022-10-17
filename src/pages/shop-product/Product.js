@@ -8,17 +8,37 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { productData } from "../../data-helper/product";
+
 
 const Product = ({ location, product }) => {
   const { pathname } = location;
+  console.log("-- >>> pathName:",location);
+
+
+  
+  const [getPickedProducts, setgetPickedProducts] = useState([]);
+  let { id } = useParams();
+  
+  useEffect(() => {
+      productData.map((pro, index) => {
+        if(pro.id === id){
+            setgetPickedProducts(pro)
+        }
+      })
+  }, [])
+  
+  
 
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Product Page</title>
+        <title>Rudra Cycle Mart | Products</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="Rudra Cycle Mart Coimbatore | "
         />
       </MetaTags>
 
@@ -32,40 +52,45 @@ const Product = ({ location, product }) => {
         <Breadcrumb />
 
         {/* product description with image */}
+        {
+          console.log("Product from Product", product)
+        }
         <ProductImageDescription
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
-          product={product}
+          product={getPickedProducts}
+          galleryType="leftThumb"
         />
 
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
-          productFullDesc={product.fullDescription}
+          productFullDesc={getPickedProducts}
         />
 
         {/* related product slider */}
-        <RelatedProductSlider
+        {/* <RelatedProductSlider
           spaceBottomClass="pb-95"
           category={product.category[0]}
-        />
+        /> */}
       </LayoutOne>
     </Fragment>
   );
 };
 
-Product.propTypes = {
-  location: PropTypes.object,
-  product: PropTypes.object
-};
+// Product.propTypes = {
+//   location: PropTypes.object,
+//   product: PropTypes.object
+// };
 
-const mapStateToProps = (state, ownProps) => {
-  const itemId = ownProps.match.params.id;
-  return {
-    product: state.productData.products.filter(
-      single => single.id === itemId
-    )[0]
-  };
-};
+// const mapStateToProps = (state, ownProps) => {
+//   const itemId = ownProps.match.params.id;
+//   return {
+//     product: state.productData.products.filter(
+//       single => single.id === itemId
+//     )[0]
+//   };
+// };
 
-export default connect(mapStateToProps)(Product);
+// export default connect(mapStateToProps)(Product);
+export default Product;

@@ -73,10 +73,10 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
           }`}
         >
           <div className="product-large-image-wrapper">
-            {product.discount || product.new ? (
+            {product.disPrice || product.new ? (
               <div className="product-img-badges">
-                {product.discount ? (
-                  <span className="pink">-{product.discount}%</span>
+                {product.disPrice ? (
+                  <span className="pink">-{product.disPrice}%</span>
                 ) : (
                   ""
                 )}
@@ -87,8 +87,8 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
             )}
             <LightgalleryProvider>
               <Swiper {...gallerySwiperParams}>
-                {product.image &&
-                  product.image.map((single, key) => {
+                {product.subImg &&
+                  product.subImg.map((single, key) => {
                     return (
                       <div key={key}>
                         <LightgalleryItem
@@ -101,7 +101,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                         </LightgalleryItem>
                         <div className="single-image">
                           <img
-                            src={process.env.PUBLIC_URL + single}
+                            src={single}
                             className="img-fluid"
                             alt=""
                           />
@@ -122,13 +122,13 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
         >
           <div className="product-small-image-wrapper product-small-image-wrapper--side-thumb">
             <Swiper {...thumbnailSwiperParams}>
-              {product.image &&
-                product.image.map((single, key) => {
+              {product.subImg &&
+                product.subImg.map((single, key) => {
                   return (
                     <div key={key}>
                       <div className="single-image">
                         <img
-                          src={process.env.PUBLIC_URL + single}
+                          src={single}
                           className="img-fluid"
                           alt=""
                         />

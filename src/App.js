@@ -146,10 +146,10 @@ const App = (props) => {
                 />
 
                 {/* Homepages */}
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/home-fashion"}
                   component={HomeFashion}
-                />
+                /> */}
                 <Route
                   path={process.env.PUBLIC_URL + "/home-fashion-two"}
                   component={HomeFashionTwo}
@@ -338,16 +338,16 @@ const App = (props) => {
                 />
 
                 {/* Shop product pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/product/:id"}
-                  render={(routeProps) => (
-                    <Product {...routeProps} key={routeProps.match.params.id} />
-                  )}
-                />
+                 
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
                 />
+                 
+                {/* <Route
+                  path={process.env.PUBLIC_URL + "/uploadi"}
+                  component={Upload}
+                /> */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
                   component={ProductTabRight}
@@ -387,6 +387,10 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/product/:id"}
+                  component={Product}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/contact"}
