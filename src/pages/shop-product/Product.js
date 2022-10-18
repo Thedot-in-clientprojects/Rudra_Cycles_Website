@@ -58,14 +58,14 @@ const Product = ({ location, product }) => {
         }
         <ProductImageDescription
           spaceTopClass="pt-100"
-          spaceBottomClass="pb-100"
+          spaceBottomClass="pb-20"
           product={getPickedProducts}
           galleryType="leftThumb"
         />
 
         {/* product description tab */}
         <ProductDescriptionTab
-          spaceBottomClass="pb-90"
+          spaceBottomClass="pb-20"
           productFullDesc={getPickedProducts}
         />
 
