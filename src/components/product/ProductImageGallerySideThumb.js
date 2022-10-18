@@ -68,8 +68,8 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
         <div
           className={` ${
             thumbPosition && thumbPosition === "left"
-              ? "col-xl-10 order-1 order-xl-2"
-              : "col-xl-10"
+              ? "col-xl-12 order-1 order-xl-2"
+              : "col-xl-12"
           }`}
         >
           <div className="product-large-image-wrapper">
@@ -93,7 +93,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                       <div key={key}>
                         <LightgalleryItem
                           group="any"
-                          src={process.env.PUBLIC_URL + single}
+                          src={single}
                         >
                           <button>
                             <i className="pe-7s-expand1"></i>

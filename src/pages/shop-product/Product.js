@@ -26,6 +26,7 @@ const Product = ({ location, product }) => {
       productData.map((pro, index) => {
         if(pro.id === id){
             setgetPickedProducts(pro)
+            console.log('pro -> ',pro);
         }
       })
   }, [])

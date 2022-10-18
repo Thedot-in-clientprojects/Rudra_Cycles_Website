@@ -7,6 +7,8 @@ import ProductImageGallery from "../../components/product/ProductImageGallery";
 import ProductDescriptionInfo from "../../components/product/ProductDescriptionInfo";
 import ProductImageGallerySideThumb from "../../components/product/ProductImageGallerySideThumb";
 import ProductImageFixed from "../../components/product/ProductImageFixed";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 
 const ProductImageDescription = ({
   spaceTopClass,
@@ -41,20 +43,32 @@ const ProductImageDescription = ({
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            {/* product image gallery */}
+            {
+              console.log('Image - ', product.subImg)
+            }
             {galleryType === "leftThumb" ? (
               <ProductImageGallerySideThumb
                 product={product}
-                thumbPosition="left"
+                thumbPosition="right"
               />
             ) : galleryType === "rightThumb" ? (
               <ProductImageGallerySideThumb product={product} />
             ) : galleryType === "fixedImage" ? (
               <ProductImageFixed product={product} />
             ) : (
+              <div>
               <ProductImageGallery product={product} />
+              </div>
             )}
+            
+              <div>
+                <p>
+                  Hooo
+                </p>
+              </div>
           </div>
+            
+          
           <div className="col-lg-6 col-md-6">
             {/* product description info */}
             <ProductDescriptionInfo
@@ -69,6 +83,7 @@ const ProductImageDescription = ({
               // addToast={addToast}
             />
           </div>
+          
         </div>
       </div>
     </div>

@@ -144,9 +144,16 @@ const ProductDescriptionInfo = ({
         ""
       )}
       */}
-      <div className="pro-details-quality">
-          <div className=" ml-0">
-          <a aria-label="Chat on WhatsApp" href={`https://wa.me/919845312077`} > <img className="wa-button-img" src={WhatsappButton} /></a>
+      
+      <div className="pro-details-quality" onClick={() => window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)}>
+          <div className="pro-details-cart btn-hover ml-0">
+            <a
+              href={product.affiliateLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Buy Through WhatsApp
+            </a>
           </div>
         </div>
       <div className="pro-details-quality">

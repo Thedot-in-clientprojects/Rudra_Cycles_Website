@@ -45,7 +45,7 @@ const HeaderOne = ({
       >
         <div className={layout === "container-fluid" ? layout : "container"}>
           {/* header top */}
-          <HeaderTop borderStyle={borderStyle} />
+          {/* <HeaderTop borderStyle={borderStyle} /> */}
         </div>
       </div>
 
@@ -68,7 +68,7 @@ const HeaderOne = ({
             </div>
             <div className="col-xl-2 col-lg-2 col-md-6 col-8">
               {/* Icon group */}
-              <IconGroup />
+              {/* <IconGroup /> */}
             </div>
           </div>
         </div>
