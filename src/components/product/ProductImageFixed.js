@@ -4,10 +4,10 @@ import React from "react";
 const ProductImageFixed = ({ product }) => {
   return (
     <div className="product-large-image-wrapper">
-      {product.discount || product.new ? (
+      {product.disPrice || product.new ? (
         <div className="product-img-badges">
-          {product.discount ? (
-            <span className="pink">-{product.discount}%</span>
+          {product.disPrice ? (
+            <span className="pink">-{product.disPrice}%</span>
           ) : (
             ""
           )}
@@ -18,9 +18,9 @@ const ProductImageFixed = ({ product }) => {
       )}
 
       <div className="product-fixed-image">
-        {product.image ? (
+        {product.mainImg ? (
           <img
-            src={process.env.PUBLIC_URL + product.image[0]}
+            src={product.mainImg}
             alt=""
             className="img-fluid"
           />

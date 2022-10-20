@@ -254,7 +254,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             </ul> */}
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/all/cycle"}>
               {" "}
               {strings["shop"]}
               {/* {sidebarMenu ? (
@@ -493,6 +493,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               </li>
             </ul>
           </li> */}
+         
           <li>
             <Link to={process.env.PUBLIC_URL + "/contact"}>
               {strings["contact_us"]}

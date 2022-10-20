@@ -31,7 +31,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
 
   const thumbnailSwiperParams = {
     getSwiper: getThumbnailSwiper,
-    spaceBetween: 10,
+    spaceBetween: 8,
     slidesPerView: 4,
     loopedSlides: 4,
     touchRatio: 0.2,
@@ -72,7 +72,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
               : "col-xl-12"
           }`}
         >
-          <div className="product-large-image-wrapper">
+          <div className="product-small-image-wrapper">
             {product.disPrice || product.new ? (
               <div className="product-img-badges">
                 {product.disPrice ? (

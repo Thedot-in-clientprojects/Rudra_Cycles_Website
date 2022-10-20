@@ -10,6 +10,7 @@ import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab"
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import rudrabanner from "../../assets/img/rudrabanner.png"
 import { productData } from "../../data-helper/product";
 
 
@@ -26,7 +27,7 @@ const Product = ({ location, product }) => {
       productData.map((pro, index) => {
         if(pro.id === id){
             setgetPickedProducts(pro)
-            console.log('pro -> ',pro);
+            console.log();
         }
       })
   }, [])
@@ -56,17 +57,19 @@ const Product = ({ location, product }) => {
         {
           console.log("Product from Product", product)
         }
-       
+        <hr>
+        </hr>
         <ProductImageDescription
-          // spaceTopClass="pt-20"
-          // spaceBottomClass="pb-10"
+          spaceTopClass="pt-100"
+          spaceBottomClass="pb-100"
           product={getPickedProducts}
-          galleryType="leftThumb"
+          galleryType="fixedImage"
         />
-
+        
         {/* product description tab */}
         <ProductDescriptionTab
-          spaceBottomClass="pb-20"
+          spaceTopClass="pt-100"
+          spaceBottomClass="pb-100"
           productFullDesc={getPickedProducts}
         />
 
@@ -75,6 +78,10 @@ const Product = ({ location, product }) => {
           spaceBottomClass="pb-95"
           category={product.category[0]}
         /> */}
+        <div className="rudrabanner">
+
+        </div>
+        
       </LayoutOne>
     </Fragment>
   );

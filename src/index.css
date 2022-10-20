@@ -1,0 +1,8 @@
+.rudrabanner {
+    background-image: url(./assets/img/rudrabanner.png);
+    min-height: 58vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}

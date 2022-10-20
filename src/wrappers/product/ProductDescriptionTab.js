@@ -36,8 +36,11 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                       <span>Materials</span> {productFullDesc.materials}
                     </li>
                     <li>
-                      <span>Other Info</span> {productFullDesc.overview}
+                      <span>Drive</span> {productFullDesc.driveTrain}
                     </li>
+                    <li>
+                      <span>Components</span> {productFullDesc.component}
+                    </li> 
                   </ul>
                 </div>
               </Tab.Pane>

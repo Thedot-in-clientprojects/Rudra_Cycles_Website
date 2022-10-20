@@ -7,7 +7,14 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
-import WhatsappButton from "../../assets/img/WhatsAppButtonGreenSmall.png"
+import WhatsappButton from "../../assets/img/WhatsAppButtonGreenSmall.png";
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
 const ProductDescriptionInfo = ({
   product,
@@ -40,6 +47,7 @@ const ProductDescriptionInfo = ({
   //   selectedProductColor,
   //   selectedProductSize
   // );
+  const theme = useTheme();
 
   return (
     <div className="product-details-content ml-70">
@@ -144,8 +152,25 @@ const ProductDescriptionInfo = ({
         ""
       )}
       */}
+          <Card sx={{ display: 'flex',  border: "1px solid #E4852D", flexFlow: "row" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column'  }}>
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Typography component="div" variant="h5">
+                Frame Size
+              </Typography>
+              <Typography variant="subtitle1" color="text.secondary" component="div">
+                27"inch
+              </Typography>
+            </CardContent>
+          </Box>
+            <CardContent style={{display: "flex", justifyItems: "end"}}>
+              <p>1000  </p>
+            </CardContent>
+        </Card>
       
-      <div className="pro-details-quality" onClick={() => window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)}>
+
+
+      <div className="pro-details-quality" onClick={() => window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)} >
           <div className="pro-details-cart btn-hover ml-0">
             <a
               href={product.affiliateLink}

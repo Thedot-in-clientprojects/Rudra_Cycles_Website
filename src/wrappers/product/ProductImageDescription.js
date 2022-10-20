@@ -42,9 +42,7 @@ const ProductImageDescription = ({
     >
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-6" style={{
-            marginBottom:-400
-          }}>
+          <div className="col-lg-6 col-md-6" >
             {
               console.log('Image - ', product.subImg)
             }
@@ -60,6 +58,8 @@ const ProductImageDescription = ({
             ) : (
               <div>
               <ProductImageGallery product={product} />
+         
+
               </div>
             )}
             

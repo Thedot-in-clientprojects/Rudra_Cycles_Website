@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
+import "./index.css"
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import Dashboard from "./admin/Dashboard/Dashboard";
 
@@ -301,7 +302,7 @@ const App = (props) => {
 
                 {/* Shop pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                  path={process.env.PUBLIC_URL + "/all/cycle"}
                   component={ShopGridStandard}
                 />
                 <Route
