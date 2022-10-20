@@ -20,6 +20,7 @@ const ProductImageDescription = ({
   wishlistItems,
   compareItems
 }) => {
+
   // const wishlistItem = wishlistItems.filter(
   //   wishlistItem => wishlistItem.id === product.id
   // )[0];
@@ -27,12 +28,11 @@ const ProductImageDescription = ({
   //   compareItem => compareItem.id === product.id
   // )[0];
   // const { addToast } = useToasts();
-
   //   const discountedPrice = getDiscountPrice(product.price, product.disPrice);
-    // const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
-    // const finalDiscountedPrice = +(
-    //   discountedPrice * currency.currencyRate
-    // ).toFixed(2);
+  // const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  // const finalDiscountedPrice = +(
+  //   discountedPrice * currency.currencyRate
+  // ).toFixed(2);
 
   return (
     <div
@@ -42,7 +42,9 @@ const ProductImageDescription = ({
     >
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-6">
+          <div className="col-lg-6 col-md-6" style={{
+            marginBottom:-400
+          }}>
             {
               console.log('Image - ', product.subImg)
             }

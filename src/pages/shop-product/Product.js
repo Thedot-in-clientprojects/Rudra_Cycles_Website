@@ -56,9 +56,10 @@ const Product = ({ location, product }) => {
         {
           console.log("Product from Product", product)
         }
+       
         <ProductImageDescription
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-20"
+          // spaceTopClass="pt-20"
+          // spaceBottomClass="pb-10"
           product={getPickedProducts}
           galleryType="leftThumb"
         />
