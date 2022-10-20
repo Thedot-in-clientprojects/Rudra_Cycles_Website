@@ -10,8 +10,13 @@ import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
-
+import { categoryData } from "../shop-product/Category";
+import { productData } from "../../data-helper/product";
 const ShopGridStandard = ({location, products}) => {
+
+    const [allCycles, setallCycles] = useState([])
+  
+
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -73,7 +78,7 @@ const ShopGridStandard = ({location, products}) => {
                                 <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
 
                                 {/* shop page content default */}
-                                <ShopProducts layout={layout} products={currentData} />
+                                <ShopProducts layout={layout} products={currentData} fineProduct={productData}/>
 
                                 {/* shop product pagination */}
                                 <div className="pro-pagination-style text-center mt-30">
