@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { DropzoneArea } from 'material-ui-dropzone';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -375,11 +374,7 @@ function Products() {
               
                 <div style={{marginTop: "20px"}}>
                 <p>Upload product images here</p>
-                 <DropzoneArea
-                acceptedFiles={['image/*']}
-                dropzoneText={"Drag and drop an image here or click"}
-                onChange={(files) => console.log('Files:', files)}
-                />
+                
                 </div>
                 <div style={{marginTop: "20px"}}>
                 <Form.Label htmlFor="exampleColorInput"></Form.Label>
