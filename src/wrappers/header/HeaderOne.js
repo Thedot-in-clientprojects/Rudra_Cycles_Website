@@ -34,7 +34,7 @@ const HeaderOne = ({
     <header
       className={`header-area clearfix ${headerBgClass ? headerBgClass : ""} ${
         headerPositionClass ? headerPositionClass : ""
-      }`}
+      }`} 
     >
       <div
         className={`${headerPaddingClass ? headerPaddingClass : ""} ${
@@ -58,17 +58,17 @@ const HeaderOne = ({
       >
         <div className={layout === "container-fluid" ? layout : "container"}>
           <div className="row">
-            <div className="col-xl-2 col-lg-2 col-md-6 col-4">
+            <div className="col-xl-2 col-lg-2 col-md-6 col-4"style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
               {/* header logo */}
-              <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
+              <img src="/assets/img/logo/logo.png" logoClass="logo" className="logomain"  />
             </div>
-            <div className="col-xl-8 col-lg-8 d-none d-lg-block">
+            <div className="col-xl-8 col-lg-8 d-none d-lg-block" >
               {/* Nav menu */}
               <NavMenu />
             </div>
             <div className="col-xl-2 col-lg-2 col-md-6 col-8">
               {/* Icon group */}
-              {/* <IconGroup /> */}
+               <IconGroup />
             </div>
           </div>
         </div>

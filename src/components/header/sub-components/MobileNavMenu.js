@@ -9,7 +9,7 @@ const MobileNavMenu = ({ strings }) => {
       <ul>
         <li className="menu-item-has-children">
           <Link to={process.env.PUBLIC_URL + "/"}>{strings["home"]}</Link>
-          <ul className="sub-menu">
+          {/* <ul className="sub-menu">
             <li className="menu-item-has-children">
               <Link to={process.env.PUBLIC_URL + "/"}>
                 {strings["home_group_one"]}
@@ -221,7 +221,7 @@ const MobileNavMenu = ({ strings }) => {
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> */}
         </li>
 
         <li className="menu-item-has-children">
