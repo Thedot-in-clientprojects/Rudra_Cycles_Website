@@ -18,7 +18,7 @@ const TabProduct = ({
       } ${bgColorClass ? bgColorClass : ""}`}
     >
       <div className="container">
-        <SectionTitle titleText="DAILY DEALS!" positionClass="text-center" />
+        <SectionTitle titleText="SHOP BY CATEGORY" positionClass="text-center" />
         <Tab.Container defaultActiveKey="bestSeller">
           <Nav
             variant="pills"
@@ -37,6 +37,26 @@ const TabProduct = ({
             <Nav.Item>
               <Nav.Link eventKey="saleItems">
                 <h4>Kids</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="saleItems">
+                <h4>E-Cycles</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="saleItems">
+                <h4>Hybrid</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="saleItems">
+                <h4>E-Conversion Kit</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="saleItems">
+                <h4>Accessories</h4>
               </Nav.Link>
             </Nav.Item>
           </Nav>

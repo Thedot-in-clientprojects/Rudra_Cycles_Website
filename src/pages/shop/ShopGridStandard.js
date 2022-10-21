@@ -63,16 +63,19 @@ const ShopGridStandard = ({location, products}) => {
         '5`6″-5`9″  - 168-175 cm',
     ]
     
-    const [selectedCategoryHere, setselectedCategoryHere] = useState('');
+  const [selectedCategoryHere, setselectedCategoryHere] = useState('');
   const selectedCategory = (category) => {
       console.log(category);
       setselectedCategoryHere(category);
 
   }
 
-  const getProductBasedOnFilters = () => {
-    
-  }
+//   const getProductBasedOnFilters = (p) => {
+//         productData.filter((p) => p.)
+//   }         
+
+  const [productMain, setproductMain] = useState([]);
+
 
     return (
         <Fragment>
@@ -218,7 +221,7 @@ const ShopGridStandard = ({location, products}) => {
                             </div>
                             <div className="col-lg-9 order-1 order-lg-2">
                                 {/* shop topbar default */}
-                                {/* <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} /> */}
+                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
                                 {/* grid three-column */}
                                 {/* shop page content default */}
                                 {/* <ShopProducts layout={layout} products={currentData} fineProduct={productData}/> */}
