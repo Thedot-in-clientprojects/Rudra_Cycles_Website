@@ -18,11 +18,16 @@ const ProductGrid = ({
   wishlistItems,
   compareItems,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
+  mainProduct
 }) => {
   return (
     <Fragment>
-      {productData && productData.map((pd, index) => {
+      {mainProduct.length > 0 ? (
+          <>
+      {console.log('mainProduct -> ', mainProduct)}
+
+        {mainProduct && mainProduct.map((pd, index) => {
         return(
           <>
           <ProductGridSingle
@@ -54,34 +59,48 @@ const ProductGrid = ({
           </>
         )
       })
-      }
-      {/* {products.map(product => {
-        return (
+      }    
+          </>
+      ) : (
+        <>
+          {productData && productData.map((pd, index) => {
+        return(
+          <>
           <ProductGridSingle
-            sliderClassName={sliderClassName}
-            spaceBottomClass={spaceBottomClass}
-            product={product}
-            currency={currency}
-            addToCart={addToCart}
-            addToWishlist={addToWishlist}
-            addToCompare={addToCompare}
-            cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.id)[0]
-            }
-            wishlistItem={
-              wishlistItems.filter(
-                wishlistItem => wishlistItem.id === product.id
-              )[0]
-            }
-            compareItem={
-              compareItems.filter(
-                compareItem => compareItem.id === product.id
-              )[0]
-            }
-            key={product.id}
+            // sliderClassName={sliderClassName}
+            // spaceBottomClass={spaceBottomClass}
+            product={pd}
+            // currency={currency}
+            // addToCart={addToCart}
+            // addToWishlist={addToWishlist}
+            // addToCompare={addToCompare}
+            // cartItem={
+            //   cartItems.filter(cartItem => cartItem.id === product.id)[0]
+            // }
+            // wishlistItem={
+            //   wishlistItems.filter(
+            //     wishlistItem => wishlistItem.id === product.id
+            //   )[0]
+            // }
+            // compareItem={
+            //   compareItems.filter(
+            //     compareItem => compareItem.id === product.id
+            //   )[0]
+            // }
+            key={pd.id}
           />
-        );
-      })} */}
+          {
+            console.log('Cycle pd - ', pd)
+          }
+          </>
+        )
+      })
+      }    
+        </>
+      )
+
+      }
+      
     </Fragment>
   );
 };

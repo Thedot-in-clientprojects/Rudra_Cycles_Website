@@ -3,6 +3,7 @@ const productData = [
     {
         id: '0026',
         name: 'Cycle 1',
+        mainCategory: 'MTB',
         price: 5000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -46,6 +47,7 @@ const productData = [
     {
         id: '0027',
         name: 'Cycle 2',
+        mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -87,6 +89,7 @@ const productData = [
     {
         id: '0028',
         name: 'Cycle 3',
+        mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -128,6 +131,7 @@ const productData = [
     {
         id: '0028',
         name: 'Cycle 4',
+        mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -169,6 +173,7 @@ const productData = [
     {
         id: '0029',
         name: 'Cycle 5',
+        mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
