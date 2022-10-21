@@ -6,10 +6,7 @@
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
         "@mui/material": "^5.10.10",
-<<<<<<< HEAD
-=======
         "@mui/styled-engine-sc": "^5.10.6",
->>>>>>> c8e722fa36b15bf9fa3cf4ca3ff82bceaf001bec
         "animate.css": "^3.7.2",
         "axios": "^0.19.0",
         "bootstrap": "4.6.0",

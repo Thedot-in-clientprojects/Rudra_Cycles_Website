@@ -6,3 +6,20 @@
     background-repeat: no-repeat;
     background-position-y: bottom;
 }
+
+.logomain{
+    width: 18rem;
+}
+
+@media screen and (max-width: 770px) {
+    .logomain{
+        width: 12rem;
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 470px) {
+    .logomain{
+        width: 9rem;
+        margin-left: 60px;
+    }
+}

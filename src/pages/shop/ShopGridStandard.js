@@ -12,7 +12,7 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
 const ShopGridStandard = ({location, products}) => {
-    const [layout, setLayout] = useState('grid three-column');
+    const [layout, setLayout] = useState('grid two-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
     const [filterSortType, setFilterSortType] = useState('');
@@ -50,7 +50,7 @@ const ShopGridStandard = ({location, products}) => {
     return (
         <Fragment>
             <MetaTags>
-                <title>Flone | Shop Page</title>
+                <title>Rudra Cycle Mart | Coimbatore</title>
                 <meta name="description" content="Shop page of flone react minimalist eCommerce template." />
             </MetaTags>
 

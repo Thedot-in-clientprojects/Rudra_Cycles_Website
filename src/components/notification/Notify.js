@@ -16,7 +16,7 @@ function Notify() {
                     
 
                     <p style={{textAlign: "center", color: "#fff",  fontWeight: "bold"}}>
-                    EMI options Available
+                    PAN INDIA FREE DELIVERY AVAILABLE
                     </p>
                 </Carousel.Item>
                 <Carousel.Item>
