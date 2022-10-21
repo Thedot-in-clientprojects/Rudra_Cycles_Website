@@ -16,7 +16,8 @@ const ProductGridListSingle = ({
   wishlistItem,
   compareItem,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
+  fineProduct
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
@@ -41,23 +42,23 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.image[0]}
+                src={product.subImg[0]}
                 alt=""
               />
-              {product.image.length > 1 ? (
+              {product.subImg.length > 1 ? (
                 <img
                   className="hover-img"
-                  src={process.env.PUBLIC_URL + product.image[1]}
+                  src={product.subImg[1]}
                   alt=""
                 />
               ) : (
                 ""
               )}
             </Link>
-            {product.discount || product.new ? (
+            {product.disPrice || product.new ? (
               <div className="product-img-badges">
-                {product.discount ? (
-                  <span className="pink">-{product.discount}%</span>
+                {product.disPrice ? (
+                  <span className="pink">-{product.disPrice}%</span>
                 ) : (
                   ""
                 )}
@@ -68,7 +69,7 @@ const ProductGridListSingle = ({
             )}
 
             <div className="product-action">
-              <div className="pro-same-action pro-wishlist">
+              {/* <div className="pro-same-action pro-wishlist">
                 <button
                   className={wishlistItem !== undefined ? "active" : ""}
                   disabled={wishlistItem !== undefined}
@@ -81,8 +82,16 @@ const ProductGridListSingle = ({
                 >
                   <i className="pe-7s-like" />
                 </button>
-              </div>
-              <div className="pro-same-action pro-cart">
+              </div> */}
+               {/* <a
+                    href={product.affiliateLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {" "}
+                    Buy now{" "}
+                  </a> */}
+              {/* <div className="pro-same-action pro-cart">
                 {product.affiliateLink ? (
                   <a
                     href={product.affiliateLink}
@@ -120,12 +129,12 @@ const ProductGridListSingle = ({
                     Out of Stock
                   </button>
                 )}
-              </div>
-              <div className="pro-same-action pro-quickview">
+              </div> */}
+              {/* <div className="pro-same-action pro-quickview">
                 <button onClick={() => setModalShow(true)} title="Quick View">
                   <i className="pe-7s-look" />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="product-content text-center">
@@ -163,23 +172,23 @@ const ProductGridListSingle = ({
                   <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL + product.image[0]}
+                      src={product.subImg[0]}
                       alt=""
                     />
-                    {product.image.length > 1 ? (
+                    {product.subImg.length > 1 ? (
                       <img
                         className="hover-img img-fluid"
-                        src={process.env.PUBLIC_URL + product.image[1]}
+                        src={product.subImg[1]}
                         alt=""
                       />
                     ) : (
                       ""
                     )}
                   </Link>
-                  {product.discount || product.new ? (
+                  {product.disPrice || product.new ? (
                     <div className="product-img-badges">
                       {product.discount ? (
-                        <span className="pink">-{product.discount}%</span>
+                        <span className="pink">-{product.disPrice}%</span>
                       ) : (
                         ""
                       )}
@@ -309,7 +318,7 @@ const ProductGridListSingle = ({
         </div>
       </div>
       {/* product modal */}
-      <ProductModal
+      {/* <ProductModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         product={product}
@@ -324,7 +333,7 @@ const ProductGridListSingle = ({
         addtowishlist={addToWishlist}
         addtocompare={addToCompare}
         addtoast={addToast}
-      />
+      /> */}
     </Fragment>
   );
 };

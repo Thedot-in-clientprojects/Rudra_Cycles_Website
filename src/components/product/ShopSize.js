@@ -3,12 +3,20 @@ import React from "react";
 import { setActiveSort } from "../../helpers/product";
 
 const ShopSize = ({ sizes, getSortParams }) => {
+
+  const cycleSize = [
+      '4`10”-5`0” - 148-152 cm',
+      '5`0″-5`3″  - 152-160 cm',
+      '5`3″-5`6″  - 160-168 cm',
+      '5`6″-5`9″  - 168-175 cm',
+  ]
+
   return (
     <div className="sidebar-widget mt-40">
       <h4 className="pro-sidebar-title">Size </h4>
       <div className="sidebar-widget-list mt-20">
-        {sizes ? (
-          <ul>
+        {cycleSize ? (
+            <ul>
             <li>
               <div className="sidebar-widget-list-left">
                 <button
@@ -21,7 +29,7 @@ const ShopSize = ({ sizes, getSortParams }) => {
                 </button>
               </div>
             </li>
-            {sizes.map((size, key) => {
+            {cycleSize.map((size, key) => {
               return (
                 <li key={key}>
                   <div className="sidebar-widget-list-left">
@@ -43,7 +51,9 @@ const ShopSize = ({ sizes, getSortParams }) => {
           </ul>
         ) : (
           "No sizes found"
-        )}
+        )
+        }
+       
       </div>
     </div>
   );
