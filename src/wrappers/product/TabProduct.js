@@ -37,29 +37,34 @@ const TabProduct = ({
             variant="pills"
             className="product-tab-list pt-30 pb-55 text-center"
           >
-            <Nav.Item onClick={() => selectedCategory('MTB')}>
-              <Nav.Link eventKey="newArrival">
-                <h4>MTB</h4>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item onClick={() => selectedCategory('ATB')}>
-              <Nav.Link eventKey="newArrival">
-                <h4>ATB</h4>
-              </Nav.Link>
-            </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('Kids')}>
               <Nav.Link eventKey="newArrival">
                 <h4>Kids</h4>
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item onClick={() => selectedCategory('E-Cycles')}>
+            <Nav.Item onClick={() => selectedCategory('Women')}>
               <Nav.Link eventKey="newArrival">
-              <h4>E-Cycles</h4>
+                <h4>Women</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item onClick={() => selectedCategory('MTB')}>
+              <Nav.Link eventKey="newArrival">
+                <h4>MTB</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('Hybrid')}>
               <Nav.Link eventKey="newArrival">
-                <h4>Hybrid</h4>
+              <h4>Hybrid</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item onClick={() => selectedCategory('Fat')}>
+              <Nav.Link eventKey="newArrival">
+                <h4>Fat</h4>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item onClick={() => selectedCategory('E-Cycle')}>
+              <Nav.Link eventKey="newArrival">
+                <h4>E-Cycle</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('E-Conversion Kit')}>

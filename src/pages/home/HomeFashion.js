@@ -7,6 +7,7 @@ import TabProduct from "../../wrappers/product/TabProduct";
 import BlogFeatured from "../../wrappers/blog-featured/BlogFeatured";
 import Notify from "../../components/notification/Notify";
 import HeroSliderEight from "../../wrappers/hero-slider/HeroSliderEight";
+import BannerOne from "../../wrappers/banner/BannerOne";
 
 const HomeFashion = () => {
   return (
@@ -25,7 +26,8 @@ const HomeFashion = () => {
       >
         {/* hero slider */}
         <HeroSliderEight />
-
+        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
+        
         {/* featured icon */}
         <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" />
 
