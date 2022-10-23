@@ -37,9 +37,7 @@ const ProductGridSingle = ({
         {
           console.log('Prouct -> ',product)
         }
-        <h3>
-         Here {product.name}
-        </h3>
+        
         <div
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >

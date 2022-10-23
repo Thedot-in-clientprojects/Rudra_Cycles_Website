@@ -32,7 +32,7 @@ const TabProduct = ({
     >
       <div className="container">
         <SectionTitle titleText="SHOP BY CATEGORY" positionClass="text-center" />
-        <Tab.Container defaultActiveKey="bestSeller">
+        <Tab.Container defaultActiveKey="newArrival">
           <Nav
             variant="pills"
             className="product-tab-list pt-30 pb-55 text-center"
@@ -43,32 +43,32 @@ const TabProduct = ({
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('ATB')}>
-              <Nav.Link eventKey="bestSeller">
+              <Nav.Link eventKey="newArrival">
                 <h4>ATB</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('Kids')}>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="newArrival">
                 <h4>Kids</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('E-Cycles')}>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="newArrival">
               <h4>E-Cycles</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('Hybrid')}>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="newArrival">
                 <h4>Hybrid</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('E-Conversion Kit')}>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="newArrival">
                 <h4>E-Conversion Kit</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item onClick={() => selectedCategory('Accessories')}>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="newArrival">
                 <h4>Accessories</h4>
               </Nav.Link>
             </Nav.Item>
