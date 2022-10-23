@@ -235,7 +235,7 @@ const ShopGridStandard = ({location, products}) => {
                                 <>
                                 <div className="shop-bottom-area mt-35">
                                         <div className={`row grid three-column}`}>
-                                            <ProductgridList products={selectedProducts ? selectedProducts : products} spaceBottomClass="mb-25" fineProduct={productData}/>
+                                            <ProductgridList products={selectedProducts} spaceBottomClass="mb-25" fineProduct={productData}/>
                                         </div>
                                         </div>
                                 </>

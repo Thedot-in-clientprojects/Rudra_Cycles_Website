@@ -24,7 +24,8 @@ import { realDB } from '../../../../util/initFirebase';
 import 'firebase/database'
 import 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid';
-
+import { TextareaAutosize } from '@mui/base';
+import FileUpload from "react-mui-fileuploader"
 
 
 function Products() {
@@ -41,7 +42,7 @@ function Products() {
     const [productBrand, setproductBrand] = useState('');
     const [productColor, setproductColor] = useState('');
     const [productOverview, setproductOverview] = useState('');
-    const [productTopSpeed, setproductTopSpeed] = useState('');
+    const [productTopSpeed, setproductTopSpeed] = useState(''); 
     const [productSize, setproductSize] = useState('');
     const [productRatings, setproductRatings] = useState('');
     const [productFav, setproductFav] = useState('');
@@ -104,6 +105,24 @@ function Products() {
       })
 
   }
+
+  const submitProduct = (e) => {
+    e.preventDefault();
+    const id = uuidv4();
+
+    const db = getDatabase();
+    set(ref(db, `product/${id}`), {
+      id: id,
+    }).then(res => {
+      setisSuccess(true)
+    })
+  }
+
+  const getAllProducts = () => {
+    
+  }
+
+
   const [allCategories, setallCategories] = useState([]);
   
   const getAllCategories = () => {
@@ -113,6 +132,16 @@ function Products() {
         const data = snapshot.val();
         setallCategories(data);
       });
+}
+
+
+
+const handleFileUploadError = (error) => {
+  // Do something...
+}
+
+const handleFilesChange = (files) => {
+  // Do something...
 }
 
 
@@ -246,41 +275,34 @@ function Products() {
                 />
               <Form.Label htmlFor="inputPassword5" className='mt-3'>Enter the Description</Form.Label>
                 
-              <Form.Control
-                type="text"
+              <TextareaAutosize
+                type="textarea"
+                minRows={5}
                 placeholder='Enter product description'
                 value={productDescription}
                 onChange={(e) => setproductDescription(e.target.value)}
                 />
               <Form.Label htmlFor="inputPassword5" className='mt-3'>Enter the Overview</Form.Label>
                 
-              <Form.Control
-                type="text"
+              <TextareaAutosize
+                type="textarea"
+                minRows={5}
                 placeholder='Enter product Overview'
                 value={productOverview}
                 onChange={(e) => setproductOverview(e.target.value)}
                 />
+             
                  <FormControl style={{marginTop: "25px"}} sx={{ m: 1, minWidth: 220 }} size="small">
                  <Form.Label htmlFor="inputPassword5" className='mt-3'>Enter the Top Speed</Form.Label>
                 
                 <Form.Control
                   type="text"
-                  placeholder='Enter product Overview'
-                  value={productOverview}
-                  onChange={(e) => setproductOverview(e.target.value)}
+                  placeholder='Enter Top Speed'
+                  value={productTopSpeed}
+                  onChange={(e) => setproductTopSpeed(e.target.value)}
                   />
                   </FormControl>
-                 <FormControl style={{marginTop: "25px"}} sx={{ m: 1, minWidth: 220 }} size="small">
-
-                 <Form.Label htmlFor="inputPassword5" className='mt-3'>Enter the Ratings</Form.Label>
-                
-                <Form.Control
-                  type="text"
-                  placeholder='Enter product Overview'
-                  value={productOverview}
-                  onChange={(e) => setproductOverview(e.target.value)}
-                  />
-                    </FormControl>
+               
                  <FormControl style={{marginTop: "25px"}} sx={{ m: 1, minWidth: 220 }} size="small">
 
                  <Form.Label htmlFor="inputPassword5" className='mt-3'>Enter the Ratings</Form.Label>
@@ -296,13 +318,13 @@ function Products() {
                  <FormControl style={{marginTop: "25px"}} sx={{ m: 1, minWidth: 220 }} size="small">
                  <Form.Label htmlFor="inputPassword5" className='mt-3'>Select the Frame Size</Form.Label>
                  
-<Select
-    labelId="demo-select-small"
-    id="demo-select-small"
-    value={productSize}
-    label="Branch"
-    onChange={handleCycleFrame}
->
+              <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={productSize}
+                  label="Branch"
+                  onChange={handleCycleFrame}
+              >
             <MenuItem value={'Frame Size One'}>Frame Size One</MenuItem>
             <MenuItem value={'Frame Size Two'}>Frame Size Two</MenuItem>
             <MenuItem value={'Frame Size Three'}>Frame Size Three</MenuItem>
@@ -312,7 +334,9 @@ function Products() {
      
 </Select>                      
                   </FormControl>
-                  <h4>
+                  <h4 style={{
+                    marginTop:120
+                  }}>
                     Features
                   </h4>
                  <FormControl style={{marginTop: "5px"}} sx={{ m: 1, minWidth: 220 }} size="small">
@@ -337,7 +361,7 @@ function Products() {
     value={productCycleType}
     label="Branch"
     onChange={handleCycleType}
-    placeholder="Select the Brand"
+    placeholder="Select the Cycle Type"
 >
             <MenuItem value={'Brand One'}>Brand One</MenuItem>
             <MenuItem value={'Brand Two'}>Brand Two</MenuItem>
@@ -375,6 +399,30 @@ function Products() {
                 <div style={{marginTop: "20px"}}>
                 <p>Upload product images here</p>
                 
+                  <div>
+                  <FileUpload
+                        multiFile={true}
+                        disabled={false}
+                        title="My awesome file uploader"
+                        header="[Drag to drop]"
+                        leftLabel="or"
+                        rightLabel="to select files"
+                        buttonLabel="click here"
+                        buttonRemoveLabel="Remove all"
+                        maxFileSize={10}
+                        maxUploadFiles={0}
+                        maxFilesContainerHeight={357}
+                        errorSizeMessage={'fill it or move it to use the default error message'}
+                        allowedExtensions={['jpg', 'jpeg','png']}
+                        onFilesChange={handleFilesChange}
+                        onError={handleFileUploadError}
+                        imageSrc={'path/to/custom/image'}
+                        bannerProps={{ elevation: 0, variant: "outlined" }}
+                        containerProps={{ elevation: 0, variant: "outlined" }}
+                      />
+                      <Button variant="contained">Upload</Button>
+                  </div>
+
                 </div>
                 <div style={{marginTop: "20px"}}>
                 <Form.Label htmlFor="exampleColorInput"></Form.Label>
