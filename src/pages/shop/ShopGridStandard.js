@@ -64,11 +64,18 @@ const ShopGridStandard = ({location, products}) => {
     ]
     
   const [selectedCategoryHere, setselectedCategoryHere] = useState('');
-  const selectedCategory = (category) => {
-      console.log(category);
-      setselectedCategoryHere(category);
 
+
+  const [selectedProducts, setselectedProducts] = useState('');
+  const selectedCategory = (name) => {
+    console.log(name)
+    let selectedPro = productData.filter((p) => p.mainCategory === name);
+    console.log('selectedPro -> ', selectedPro);
+    setselectedProducts(selectedPro);
   }
+
+
+
 
 //   const getProductBasedOnFilters = (p) => {
 //         productData.filter((p) => p.)
@@ -228,7 +235,7 @@ const ShopGridStandard = ({location, products}) => {
                                 <>
                                 <div className="shop-bottom-area mt-35">
                                         <div className={`row grid three-column}`}>
-                                            <ProductgridList products={products} spaceBottomClass="mb-25" fineProduct={productData}/>
+                                            <ProductgridList products={selectedProducts ? selectedProducts : products} spaceBottomClass="mb-25" fineProduct={productData}/>
                                         </div>
                                         </div>
                                 </>

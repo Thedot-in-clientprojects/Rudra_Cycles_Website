@@ -26,13 +26,13 @@ const HomeFashion = () => {
       >
         {/* hero slider */}
         <HeroSliderEight />
-        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
         
         {/* featured icon */}
         <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" />
 
         {/* tab product */}
         <TabProduct spaceBottomClass="pb-60" category="fashion" />
+        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
 
         {/* blog featured */}
         <BlogFeatured spaceBottomClass="pb-55" />
