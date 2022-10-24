@@ -14,7 +14,7 @@ const BlogDetailsStandard = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Blog Post</title>
+        <title>Blog | Rudra Cycle Mart Coimbatore</title>
         <meta
           name="description"
           content="Blog post page of flone react minimalist eCommerce template."

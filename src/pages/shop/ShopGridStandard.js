@@ -80,6 +80,8 @@ const ShopGridStandard = ({location, products}) => {
 
 
   // Filters Checklist
+  const [searchFilter, setsearchFilter] = useState('');
+  const [chooseGender, setchooseGender] = useState('');
   const [categoryPckList, setcategoryPckList] = useState(false);
   const [agePickList, setagePickList] = useState(false);
   const selectedCategory = (name) => {
@@ -104,7 +106,18 @@ const ShopGridStandard = ({location, products}) => {
     
   } 
 
+  const selectGender =  (gender) => {
+    console.log(gender)
 
+    // if(selectedProducts){
+    //   let selectedGender = selectedProducts.filter((p) => p.gender === gender);
+    //   setselectedProducts(selectedGender);
+    // }
+    // else{
+      let selectedGender = productData.filter((p) => p.gender === gender);
+      setselectedProducts(selectedGender);
+    // }
+  }
 
 //   const getProductBasedOnFilters = (p) => {
 //         productData.filter((p) => p.)
@@ -121,6 +134,9 @@ const ShopGridStandard = ({location, products}) => {
     setValue(newValue);
   };
 
+  const searchResultFilter = () => {
+      
+  }
 
     return (
         <Fragment>
@@ -150,8 +166,8 @@ const ShopGridStandard = ({location, products}) => {
       <h4 className="pro-sidebar-title">Search </h4>
       <div className="pro-sidebar-search mb-50 mt-25">
         <form className="pro-sidebar-search-form" action="#">
-          <input type="text" placeholder="Search here..." />
-          <button>
+          <input type="text" placeholder="Search here..." onChange={(e) => setsearchFilter(e.target.value)}/>
+          <button onClick={searchResultFilter}> 
             <i className="pe-7s-search" />
           </button>
         </form>
@@ -318,7 +334,25 @@ const ShopGridStandard = ({location, products}) => {
                             </div>
                             <div className="col-lg-9 order-1 order-lg-2">
                                 {/* shop topbar default */}
-                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
+                                {/* <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} /> */}
+                                <div>
+                                <div className="shop-top-bar mb-35">
+                                    <div className="select-shoing-wrap">
+                                      <div className="shop-select">
+                                        <select
+                                          onChange={(e) => {selectGender(e.target.value)}}
+                                        >
+                                          <option value="default">Gender</option>
+                                          <option value="Boys">Boys</option>
+                                          <option value="Girls">Girls</option>
+                                        </select>
+                                      </div>
+                                      <p>
+                                        Showing  result
+                                      </p>
+                                    </div>
+                                      </div>
+                                </div>
                                 {/* grid three-column */}
                                 {/* shop page content default */}
                                 {/* <ShopProducts layout={layout} products={currentData} fineProduct={productData}/> */}
