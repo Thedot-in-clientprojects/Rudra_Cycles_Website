@@ -77,10 +77,14 @@ const ProductDescriptionInfo = ({
   
 
   const [open, setopen] = useState(false);
+  const [openHere, setopenHere] = useState(false);
   const [isSuccess, setisSuccess] = useState('');
   const [userQueryName, setuserQueryName] = useState('');
   const [userQueryPhone, setuserQueryPhone] = useState('');
+  const [userQueryHereName, setuserQueryHereName] = useState('');
+  const [userQueryHerePhone, setuserQueryHerePhone] = useState('');
   const handleClose = () => setopen(false);
+  const handleCloseHere = () => setopen(false);
 
 
   const submitTriggerUserDetails = (e) => {
@@ -111,7 +115,21 @@ const ProductDescriptionInfo = ({
     p: 4,
   };
   
-  
+  const triggerBaseQuery = (e) => {
+    setopenHere(true)
+    e.preventDefault();
+    let id = uuidv4();
+    const db = getDatabase();
+    set(ref(db, `user/query/${id}`), {
+      id: id,
+      name: userQueryHereName,
+      phone: userQueryHerePhone,  
+      status: 'New'
+    }).then(res => {
+      setisSuccess(true)
+      setopenHere(false)
+    })
+  }
 
   
 
@@ -134,6 +152,25 @@ const ProductDescriptionInfo = ({
           </Typography>
           <TextField onChange={(e) => setuserQueryPhone(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
           <Button style={{ marginLeft:25, marginRight:25 }} onClick={submitTriggerUserDetails} variant="contained">Submit</Button>
+        </Box>  
+      </Modal>
+      <Modal
+        open={openHere}
+        onClose={handleCloseHere}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Enter your Name
+          </Typography>
+          <TextField onChange={(e) => setuserQueryHereName(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Enter your Phone
+          </Typography>
+          <TextField onChange={(e) => setuserQueryHerePhone(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+          <Button style={{ marginLeft:25, marginRight:25 }} onClick={triggerBaseQuery} variant="contained">Submit</Button>
         </Box>  
       </Modal>
       <h2>
@@ -265,11 +302,9 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       <div className="pro-details-quality">
-          <div className="pro-details-cart btn-hover ml-0">
+          <div className="pro-details-cart btn-hover ml-0" onClick={triggerBaseQuery}>
             <a
-              href={product.affiliateLink}
-              rel="noopener noreferrer"
-              target="_blank"
+              
             >
               Buy Here
             </a>
