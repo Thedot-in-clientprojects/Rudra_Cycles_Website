@@ -38,7 +38,8 @@ const Contact = ({ location }) => {
         id: id,
         name: name,
         phone: email,
-        enquery: enquery
+        enquery: enquery,
+        status: 'New'
         
       }).then(res => {
         setname('')
