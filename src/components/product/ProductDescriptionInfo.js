@@ -73,6 +73,10 @@ const ProductDescriptionInfo = ({
     setopen(true)
     // window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)
   }
+  const triggerUserDetailsHere = () => {
+    setopenHere(true)
+    // window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)
+  }
 
   
 
@@ -115,8 +119,8 @@ const ProductDescriptionInfo = ({
     p: 4,
   };
   
+
   const triggerBaseQuery = (e) => {
-    setopenHere(true)
     e.preventDefault();
     let id = uuidv4();
     const db = getDatabase();
@@ -302,7 +306,7 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       <div className="pro-details-quality">
-          <div className="pro-details-cart btn-hover ml-0" onClick={triggerBaseQuery}>
+          <div className="pro-details-cart btn-hover ml-0" onClick={() => triggerUserDetailsHere()}>
             <a
               
             >
