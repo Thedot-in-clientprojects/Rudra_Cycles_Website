@@ -1,26 +1,25 @@
-[
-  {
-    "id": 1,
-    "image": "/assets/img/banner/banner-1.jpg",
-    "title": "Watches",
-    "subtitle": "Starting at",
-    "price": "$99.00",
-    "link": "/shop-grid-standard"
-  },
-  {
-    "id": 2,
-    "image": "/assets/img/banner/banner-2.jpg",
-    "title": "Plo Bag",
-    "subtitle": "Starting at",
-    "price": "$79.00",
-    "link": "/shop-grid-standard"
-  },
-  {
-    "id": 3,
-    "image": "/assets/img/banner/banner-3.jpg",
-    "title": "Sunglass",
-    "subtitle": "Starting at",
-    "price": "$29.00",
-    "link": "/shop-grid-standard"
-  }
+[{
+        "id": 1,
+        "image": "/assets/img/banner/banner-1.jpg",
+        "title": "MTB",
+        "subtitle": "Starting at",
+        "price": "850",
+        "link": "/all/cycle"
+    },
+    {
+        "id": 2,
+        "image": "/assets/img/banner/banner-2.jpg",
+        "title": "Kids",
+        "subtitle": "Starting at",
+        "price": "2800",
+        "link": "/all/cycle"
+    },
+    {
+        "id": 3,
+        "image": "/assets/img/banner/banner-3.jpg",
+        "title": "Mountain Bike",
+        "subtitle": "Starting at",
+        "price": "6800",
+        "link": "/all/cycle"
+    }
 ]
