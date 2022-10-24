@@ -14,6 +14,11 @@ import { categoryData } from "../shop-product/Category";
 import { productData } from "../../data-helper/product";
 import { setActiveSort } from "../../helpers/product";
 import ProductgridList from "../../wrappers/product/ProductgridList";
+import Slider from '@mui/material/Slider';
+
+function valuetext(value) {
+  return `${value}°C`;
+}
 
 const ShopGridStandard = ({location, products}) => {
 
@@ -63,17 +68,41 @@ const ShopGridStandard = ({location, products}) => {
         '5`6″-5`9″  - 168-175 cm',
     ]
     
+    const userAge = [
+      '12+',
+      '15 & Above'
+    ]
+
   const [selectedCategoryHere, setselectedCategoryHere] = useState('');
 
 
-  const [selectedProducts, setselectedProducts] = useState('');
+  const [selectedProducts, setselectedProducts] = useState(productData);
+
+
+  // Filters Checklist
+  const [categoryPckList, setcategoryPckList] = useState(false);
+  const [agePickList, setagePickList] = useState(false);
   const selectedCategory = (name) => {
     console.log(name)
-    let selectedPro = productData.filter((p) => p.mainCategory === name);
-    console.log('selectedPro -> ', selectedPro);
+    let selectedPro = productData.filter((p) => p.mainCategory === name.name);
+    console.log(productData)
+    console.log('selectedPro -> /all/cycle', selectedPro);
     setselectedProducts(selectedPro);
+    setcategoryPckList(true)
   }
-
+  const selectedAge = (age) => {
+    console.log(age);
+    setagePickList(true);
+    if(categoryData){
+      let selectedAge = selectedProducts.filter((p) => p.age === age);
+      setselectedProducts(selectedAge);
+    }
+    else{
+      let selectedAge = productData.filter((p) => p.age === age);
+      setselectedProducts(selectedAge);
+    }
+    
+  } 
 
 
 
@@ -82,6 +111,15 @@ const ShopGridStandard = ({location, products}) => {
 //   }         
 
   const [productMain, setproductMain] = useState([]);
+
+
+
+  // Slider Functionlaity
+  const [value, setValue] = React.useState([2, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
 
     return (
@@ -119,6 +157,17 @@ const ShopGridStandard = ({location, products}) => {
         </form>
       </div>
     </div>
+    <div className="sidebar-widget" style={{ marginTop:25 }}>
+      <h4 className="pro-sidebar-title">Price (In Thousands)</h4>
+      <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
+      />
+      </div>
+    
       {/* filter by categories */}
       <>
       <div className="sidebar-widget">
@@ -143,6 +192,47 @@ const ShopGridStandard = ({location, products}) => {
                     >
                       {" "}
                       <span className="checkmark" /> {category.name}{" "}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>
+
+          </p>
+        )
+
+        }
+        
+        
+       
+        
+      </div>
+      </div>
+      <div className="sidebar-widget" style={{ marginTop:25 }}>
+      <h4 className="pro-sidebar-title">Age </h4>
+      <div className="sidebar-widget-list mt-30">
+        {userAge ? (
+            <ul>
+            <li>
+              <div className="sidebar-widget-list-left">
+                <button
+                >
+                  <span className="checkmark" /> All Age
+                </button>
+              </div>
+            </li>
+            {userAge.map((age, key) => {
+              return (
+                <li key={key}>
+                  <div className="sidebar-widget-list-left">
+                    <button
+                      onClick={() => selectedAge(age)}
+                    >
+                      {" "}
+                      <span className="checkmark" /> {age}{" "}
                     </button>
                   </div>
                 </li>
@@ -235,7 +325,7 @@ const ShopGridStandard = ({location, products}) => {
                                 <>
                                 <div className="shop-bottom-area mt-35">
                                         <div className={`row grid three-column}`}>
-                                            <ProductgridList products={selectedProducts} spaceBottomClass="mb-25" fineProduct={productData}/>
+                                            <ProductgridList products={selectedProducts} spaceBottomClass="mb-25" fineProduct={selectedProducts ? selectedProducts : productData}/>
                                         </div>
                                         </div>
                                 </>

@@ -4,6 +4,7 @@ const productData = [
         id: '0026',
         name: 'Geekay - Billion',
         mainCategory: 'MTB',
+        age: '12+',
         price: 5000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -47,6 +48,7 @@ const productData = [
     {
         id: '0027',
         name: 'Cycle 2',
+        age: '15 & Above',
         mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
@@ -89,6 +91,7 @@ const productData = [
     {
         id: '0028',
         name: 'Cycle 3',
+        age: '12+',
         mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
@@ -129,8 +132,9 @@ const productData = [
         affiliateLink: '/good'
     },
     {
-        id: '0028',
+        id: '004    8',
         name: 'Cycle 4',
+        age: '12+',
         mainCategory: 'MTB',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
@@ -173,7 +177,8 @@ const productData = [
     {
         id: '0029',
         name: 'Cycle 5',
-        mainCategory: 'MTB',
+        age: '12+',
+        mainCategory: 'Kids',
         price: 8000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 4600,
@@ -215,6 +220,7 @@ const productData = [
     {
         id: '0030',
         name: 'Cycle 6',
+        age: '12+',
         mainCategory: 'Women',
         price: 12000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
@@ -257,6 +263,7 @@ const productData = [
     {
         id: '0031',
         name: 'Cycle 7',
+        age: '15 & Above',
         mainCategory: 'Kids',
         price: 12000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
@@ -300,6 +307,7 @@ const productData = [
         id: '0032',
         name: 'Cycle 8',
         mainCategory: 'Fat',
+        age: '12+',
         price: 12000,
         category: ['Mountain Bike', 'All Drive', '2 Wheel Drive'],
         disPrice: 13800,

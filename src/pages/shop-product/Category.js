@@ -1,14 +1,14 @@
 const categoryData = [{
         id: '001',
-        name: 'MTB'
+        name: 'Kids'
     },
     {
         id: '002',
-        name: 'ATB'
+        name: 'Women'
     },
     {
         id: '003',
-        name: 'Kids'
+        name: 'MTB'
     },
     {
         id: '004',
@@ -16,14 +16,18 @@ const categoryData = [{
     },
     {
         id: '005',
-        name: 'E-Cycle'
+        name: 'Fat'
     },
     {
         id: '006',
-        name: 'E Conversion Kit'
+        name: 'E Cycle'
     },
     {
         id: '007',
+        name: 'E Conversion Kit'
+    },
+    {
+        id: '008',
         name: 'Accessories'
     },
 ]

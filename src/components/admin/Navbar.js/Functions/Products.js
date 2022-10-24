@@ -118,8 +118,50 @@ function Products() {
     })
   }
 
+
+  const [productImage, setproductImage] = useState('');
+  const [productImageURL, setproductImageURL] = useState('');
+  const [progressing, setprogressing] = useState(false);
+  const [imageUploadMainDone, setimageUploadMainDone] = useState(false);
+
+
+  const [productSecondImage, setproductSecondImage] = useState('');
+  const [productImageMainURL, setproductImageMainURL] = useState('');
+  const [progressingMain, setprogressingMain] = useState(false);
+  const [imageUploadSecondDone, setimageUploadSecondDone] = useState(false);
+
+  const productImageHandle = (e) =>{
+    setproductImage(e.target.files[0])
+  }
+
+  const uploadProductMain = (e) => {
+
+          e.preventDefault(); // prevent page refreshing
+
+          let file = productImage;
+          var storage = firebase.storage();
+          var storageRef = storage.ref();
+          var uploadTask = storageRef.child(`product/image/${uuidv4()}/${file.name}`).put(file);
+        
+          uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+              var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+              setprogressing(true)
+            },(error) =>{
+              throw error
+            },() =>{
+              // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+        
+              uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                setproductImageURL(url)
+                setprogressing(false)
+
+              })
+  }
+)}
+
   const getAllProducts = () => {
-    
+
   }
 
 
@@ -398,29 +440,13 @@ const handleFilesChange = (files) => {
               
                 <div style={{marginTop: "20px"}}>
                 <p>Upload product images here</p>
-                
+                  
                   <div>
-                  <FileUpload
-                        multiFile={true}
-                        disabled={false}
-                        title="My awesome file uploader"
-                        header="[Drag to drop]"
-                        leftLabel="or"
-                        rightLabel="to select files"
-                        buttonLabel="click here"
-                        buttonRemoveLabel="Remove all"
-                        maxFileSize={10}
-                        maxUploadFiles={0}
-                        maxFilesContainerHeight={357}
-                        errorSizeMessage={'fill it or move it to use the default error message'}
-                        allowedExtensions={['jpg', 'jpeg','png']}
-                        onFilesChange={handleFilesChange}
-                        onError={handleFileUploadError}
-                        imageSrc={'path/to/custom/image'}
-                        bannerProps={{ elevation: 0, variant: "outlined" }}
-                        containerProps={{ elevation: 0, variant: "outlined" }}
-                      />
-                      <Button variant="contained">Upload</Button>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile" onChange={productImageHandle}/>
+                  </div>
+                      <Button variant="contained" onClick={uploadProductMain}>Upload</Button>
                   </div>
 
                 </div>
