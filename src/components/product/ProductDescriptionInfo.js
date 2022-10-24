@@ -15,6 +15,24 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { modalUnstyledClasses } from "@mui/base";
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import { uuidv4 } from "@firebase/util";
+import firebase from 'firebase/compat/app'
+import {
+    getStorage,
+    ref as sRef,
+    uploadBytesResumable,
+    uploadBytes,
+    getDownloadURL 
+} from "firebase/storage";
+import { ref, runTransaction, getDatabase, set , onValue , get, onChildAdded, onChildChanged, onChildRemoved  } from 'firebase/database'
+import { doc, onSnapshot, collection, query, where } from "firebase/firestore";
+import { realDB } from '../../util/initFirebase';
+import 'firebase/database';
+import 'firebase/storage';
+import Button from '@mui/material/Button';
 
 const ProductDescriptionInfo = ({
   product,
@@ -49,8 +67,75 @@ const ProductDescriptionInfo = ({
   // );
   const theme = useTheme();
 
+
+  // 
+  const triggerUserDetails = () => {
+    setopen(true)
+    // window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)
+  }
+
+  
+
+  const [open, setopen] = useState(false);
+  const [isSuccess, setisSuccess] = useState('');
+  const [userQueryName, setuserQueryName] = useState('');
+  const [userQueryPhone, setuserQueryPhone] = useState('');
+  const handleClose = () => setopen(false);
+
+
+  const submitTriggerUserDetails = (e) => {
+    e.preventDefault();
+    let id = uuidv4();
+    const db = getDatabase();
+    set(ref(db, `user/query/${id}`), {
+      id: id,
+      name: userQueryName,
+      phone: userQueryPhone,  
+      status: 'New'
+    }).then(res => {
+      setisSuccess(true)
+      setopen(false)
+      window.open(`https://wa.me/919496582996?text=Hi, This is ${userQueryName}, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 ${userQueryPhone}`)
+    })
+  }
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  
+  
+
+  
+
   return (
     <div className="product-details-content ml-70">
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Enter your Name
+          </Typography>
+          <TextField onChange={(e) => setuserQueryName(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Enter your Phone
+          </Typography>
+          <TextField onChange={(e) => setuserQueryPhone(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+          <Button style={{ marginLeft:25, marginRight:25 }} onClick={submitTriggerUserDetails} variant="contained">Submit</Button>
+        </Box>  
+      </Modal>
       <h2>
         {product.name}
       </h2>
@@ -170,12 +255,10 @@ const ProductDescriptionInfo = ({
       
 
 
-      <div className="pro-details-quality" onClick={() => window.open(`https://wa.me/919496582996?text=Hi Vignesh, I am looking for ${product.name} - Product Id: ${product.id}. Contact me: +91 8072002769`)} >
+      <div className="pro-details-quality" onClick={() => triggerUserDetails()  } >
           <div className="pro-details-cart btn-hover ml-0">
             <a
-              href={product.affiliateLink}
-              rel="noopener noreferrer"
-              target="_blank"
+             
             >
               Buy Through WhatsApp
             </a>
