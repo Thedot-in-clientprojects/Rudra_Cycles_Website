@@ -152,7 +152,7 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/home-fashion"}
                   component={HomeFashion}
                 /> */}
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/home-fashion-two"}
                   component={HomeFashionTwo}
                 />
@@ -299,7 +299,7 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/home-valentines-day"}
                   component={HomeValentinesDay}
-                />
+                /> */}
 
                 {/* Shop pages */}
                 <Route
@@ -307,98 +307,15 @@ const App = (props) => {
                   component={ShopGridStandard}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-filter"}
-                  component={ShopGridFilter}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
-                  component={ShopGridTwoColumn}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
-                  component={ShopGridNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
-                  component={ShopGridFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
-                  component={ShopGridRightSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-standard"}
-                  component={ShopListStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-full-width"}
-                  component={ShopListFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-two-column"}
-                  component={ShopListTwoColumn}
-                />
-
-                {/* Shop product pages */}
-                 
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                  component={ProductTabLeft}
-                />
-                 
-                {/* <Route
-                  path={process.env.PUBLIC_URL + "/uploadi"}
-                  component={Upload}
-                /> */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
-                  component={ProductTabRight}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-sticky/:id"}
-                  component={ProductSticky}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-slider/:id"}
-                  component={ProductSlider}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
-                  component={ProductFixedImage}
-                />
-
-                {/* Blog pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-standard"}
-                  component={BlogStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
-                  component={BlogNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
-                  component={BlogRightSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-details-standard"}
-                  component={BlogDetailsStandard}
-                />
-
-                {/* Other pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/about"}
-                  component={About}
-                />
-                <Route
                   path={process.env.PUBLIC_URL + "/product/:id"}
                   component={Product}
                 />
-                <Route
+               <Route
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
                 />
-                <Route
+                
+                {/*<Route
                   path={process.env.PUBLIC_URL + "/my-account"}
                   component={MyAccount}
                 />
@@ -422,7 +339,7 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
-                />
+                /> */}
 
                 <Route
                   path={process.env.PUBLIC_URL + "/not-found"}

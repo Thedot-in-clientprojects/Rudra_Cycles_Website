@@ -14,7 +14,7 @@ const BlogFeaturedSingle = ({ singlePost }) => {
             {singlePost.category.map((singleCategory, key) => {
               return (
                 <span className="purple" key={key}>
-                  {singleCategory}
+                 
                 </span>
               );
             })}

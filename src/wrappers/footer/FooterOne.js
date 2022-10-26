@@ -42,7 +42,7 @@ const FooterOne = ({
         spaceBottomClass ? spaceBottomClass : ""
       } ${extraFooterClass ? extraFooterClass : ""} ${
         spaceLeftClass ? spaceLeftClass : ""
-      } ${spaceRightClass ? spaceRightClass : ""}`}
+      } ${spaceRightClass ? spaceRightClass : ""}`} style={{backgroundColor: "#2C3333"}}
     >
       <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
@@ -53,7 +53,7 @@ const FooterOne = ({
           >
             {/* footer copyright */}
             <FooterCopyright
-              footerLogo="/assets/img/logo/logo.png"
+              footerLogo="/assets/img/logo/logo2.png"
               spaceBottomClass="mb-30"
             />
           </div>

@@ -19,7 +19,6 @@ const HomeFashion = () => {
           content="Rudra Cycle Mart - The Top Cycle Shop In Coimbatore"
         />
       </MetaTags>
-      <Notify />
       <LayoutOne
         headerContainerClass="container-fluid"
         headerPaddingClass="header-padding-1"

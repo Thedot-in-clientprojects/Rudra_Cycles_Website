@@ -14,13 +14,67 @@ import { categoryData } from "../shop-product/Category";
 import { productData } from "../../data-helper/product";
 import { setActiveSort } from "../../helpers/product";
 import ProductgridList from "../../wrappers/product/ProductgridList";
-import Slider from '@mui/material/Slider';
+import { Range } from 'react-range';
+import 'react-rangeslider/lib/index.css'
+import { styled } from '@mui/material/styles';
+import Slider, { SliderThumb } from '@mui/material/Slider';
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
 const ShopGridStandard = ({location, products}) => {
+
+
+
+  
+  const [categoryFilterPickIndex, setcategoryFilterPickIndex] = useState('');
+  const [ageFilterPickIndex, setageFilterPickIndex] = useState('');
+  const [sizeFilterPickIndex, setsizeFilterPickIndex] = useState('');
+
+
+  const AirbnbSlider = styled(Slider)(({ theme }) => ({
+    color: '#FF8331',
+    height: 3,
+    padding: '13px 0',
+    '& .MuiSlider-thumb': {
+      height: 27,
+      width: 27,
+      backgroundColor: '#fff',
+      border: '1px solid currentColor',
+      '&:hover': {
+        boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
+      },
+      '& .airbnb-bar': {
+        height: 9,
+        width: 1,
+        backgroundColor: 'currentColor',
+        marginLeft: 1,
+        marginRight: 1,
+      },
+    },
+    '& .MuiSlider-track': {
+      height: 3,
+    },
+    '& .MuiSlider-rail': {
+      color: theme.palette.mode === 'dark' ? '#bfbfbf' : '#d8d8d8',
+      opacity: theme.palette.mode === 'dark' ? undefined : 1,
+      height: 3,
+    },
+  }));
+
+
+  function AirbnbThumbComponent(props) {
+    const { children, ...other } = props;
+    return (
+      <SliderThumb {...other}>
+        {children}
+        <span className="airbnb-bar" />
+        <span className="airbnb-bar" />
+        <span className="airbnb-bar" />
+      </SliderThumb>
+    );
+  }
 
     const [allCycles, setallCycles] = useState([])
   
@@ -84,16 +138,18 @@ const ShopGridStandard = ({location, products}) => {
   const [chooseGender, setchooseGender] = useState('');
   const [categoryPckList, setcategoryPckList] = useState(false);
   const [agePickList, setagePickList] = useState(false);
-  const selectedCategory = (name) => {
+  const selectedCategory = (name, index) => {
     console.log(name)
+    setcategoryFilterPickIndex(index)
     let selectedPro = productData.filter((p) => p.mainCategory === name.name);
     console.log(productData)
     console.log('selectedPro -> /all/cycle', selectedPro);
     setselectedProducts(selectedPro);
     setcategoryPckList(true)
   }
-  const selectedAge = (age) => {
-    console.log(age);
+  const selectedAge = (age, index) => {
+    // console.log(age);
+    setageFilterPickIndex(index)
     setagePickList(true);
     if(categoryData){
       let selectedAge = selectedProducts.filter((p) => p.age === age);
@@ -138,10 +194,47 @@ const ShopGridStandard = ({location, products}) => {
       
   }
 
+
+  // Price Range Logics
+  const [priceRange, setpriceRange] = useState(0);
+
+
+  // ------------------------
+
+  const [value1, setValue1] = React.useState([2000, 37000]);
+  // const [value1, setValue1] = React.useState([20, 37]);
+
+  const handleChange1 = (event, newValue, activeThumb) => {
+    if (!Array.isArray(newValue)) {
+      return;
+    }
+
+    if (activeThumb === 0) {
+      setValue1([Math.min(newValue[0], value1[1] - 10000), value1[1]]);
+    } else {
+      setValue1([value1[0], Math.max(newValue[1], value1[0] + 10000)]);
+    }
+  };
+
+
+
+  //**  Filter Selection Logic
+
+
+  // const filterSelection = () => {
+  //     if(){
+
+  //     }
+  // }
+
+  //** */
+
+  // ------------------------
+
     return (
         <Fragment>
             <MetaTags>
-                <title>Rudra Cycle Mart | Coimbatore</title>
+                <title>Shop Now | Rudra Cycle Mart Coimbatore</title>
                 <meta name="description" content="Shop page of flone react minimalist eCommerce template." />
             </MetaTags>
 
@@ -162,32 +255,39 @@ const ShopGridStandard = ({location, products}) => {
                                 <div className={`sidebar-style mr-30}`}>
       {/* shop search */}
       {/* <ShopSearch /> */}
-      <div className="sidebar-widget">
-      <h4 className="pro-sidebar-title">Search </h4>
-      <div className="pro-sidebar-search mb-50 mt-25">
-        <form className="pro-sidebar-search-form" action="#">
-          <input type="text" placeholder="Search here..." onChange={(e) => setsearchFilter(e.target.value)}/>
-          <button onClick={searchResultFilter}> 
-            <i className="pe-7s-search" />
-          </button>
-        </form>
-      </div>
-    </div>
+                              <div className="sidebar-widget">
+                              <h4 className="pro-sidebar-title">Search </h4>
+                              <div className="pro-sidebar-search mb-50 mt-25">
+                                <form className="pro-sidebar-search-form" action="#">
+                                  <input type="text" placeholder="Search here..." onChange={(e) => setsearchFilter(e.target.value)}/>
+                                  <button onClick={searchResultFilter}> 
+                                    <i className="pe-7s-search" />
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
     <div className="sidebar-widget" style={{ marginTop:25 }}>
       <h4 className="pro-sidebar-title">Price (In Thousands)</h4>
-      <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={value}
-        onChange={handleChange}
+        <p>
+          {
+            priceRange
+          }
+        </p>
+     
+        <Slider
+        getAriaLabel={() => 'Minimum distance'}
+        value={value1}
+        onChange={handleChange1}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
+        disableSwap
       />
       </div>
     
       {/* filter by categories */}
       <>
       <div className="sidebar-widget">
-      <h4 className="pro-sidebar-title">Categories </h4>
+      <h4 className="pro-sidebar-title">Categories</h4>
       <div className="sidebar-widget-list mt-30">
         {categoryData ? (
             <ul>
@@ -195,7 +295,7 @@ const ShopGridStandard = ({location, products}) => {
               <div className="sidebar-widget-list-left">
                 <button
                 >
-                  <span className="checkmark" /> All Categories
+                  <span className="checkmark"/> All Categories
                 </button>
               </div>
             </li>
@@ -204,10 +304,10 @@ const ShopGridStandard = ({location, products}) => {
                 <li key={key}>
                   <div className="sidebar-widget-list-left">
                     <button
-                      onClick={() => selectedCategory(category)}
-                    >
+                      onClick={() => selectedCategory(category, key)}>
                       {" "}
-                      <span className="checkmark" /> {category.name}{" "}
+                      <span  style={categoryFilterPickIndex === key ? {backgroundColor:'#FF3939'} : {backgroundColor:'#FFFFFF'}
+                  }/> {category.name}{" "}
                     </button>
                   </div>
                 </li>
@@ -245,10 +345,10 @@ const ShopGridStandard = ({location, products}) => {
                 <li key={key}>
                   <div className="sidebar-widget-list-left">
                     <button
-                      onClick={() => selectedAge(age)}
+                      onClick={() => selectedAge(age, key)}
                     >
                       {" "}
-                      <span className="checkmark" /> {age}{" "}
+                      <span style={ageFilterPickIndex === key ? {backgroundColor:'#FF3939'} : {backgroundColor:'#FFFFFF'}}/> {age}{" "}
                     </button>
                   </div>
                 </li>
