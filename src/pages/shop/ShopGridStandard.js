@@ -166,18 +166,17 @@ const ShopGridStandard = ({location, products}) => {
     setrememberCategory(name)
     if(selectedProducts){
     if(rememberAge){
-      let selectedPro = selectedProducts.filter((p) => {
-        if(p.age == rememberAge){
-          return p
-        }
-      }) 
-      setselectedProducts(selectedPro);
+        console.log('Remember Age: ', rememberAge, "Remember Category: ", name.name);
+        let selectedPro = productData.filter((p) => p.age === rememberAge && p.mainCategory === name.name);
+        console.log('Ctaegory Data - ', selectedPro);
+        setselectedProducts(selectedPro)
       }else{
         let selectedPro = productData.filter((p) => p.mainCategory === name.name);
         setselectedProducts(selectedPro);
         setcategoryPckList(true);
     }
-  }else{
+  }
+  else{
     let selectedPro = productData.filter((p) => p.mainCategory === name.name);
     setselectedProducts(selectedPro);
     setcategoryPckList(true);
