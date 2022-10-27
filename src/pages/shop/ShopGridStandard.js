@@ -143,6 +143,33 @@ const ShopGridStandard = ({location, products}) => {
 
   // Filters Checklist
   const [searchFilter, setsearchFilter] = useState('');
+
+  const searchFilterHandler = (searchValue) => {
+      if(selectedProducts){
+        const searchResult = productData.filter((product) => {
+          if(product == ""){
+            return product
+          }
+          else if(product.name.toLowerCase().includes(searchValue.toLowerCase())){
+            return product
+          }
+        });
+        setselectedProducts(searchResult)        
+      }
+
+      else{
+        const searchResult = productData.filter((product) => {
+          if(product == ""){
+            return product
+          }
+          else if(product.name.toLowerCase().includes(searchValue.toLowerCase())){
+            return product
+          }
+        setselectedProducts(searchResult)        
+
+      })
+  }
+  }
   const [chooseGender, setchooseGender] = useState('');
   const [categoryPckList, setcategoryPckList] = useState(false);
   const [agePickList, setagePickList] = useState(false);
@@ -281,6 +308,13 @@ const ShopGridStandard = ({location, products}) => {
 
   // ------------------------
 
+
+  const resetAllFilter = () => {
+    setrememberAge('');
+    setrememberCategory('');
+    setselectedProducts(productData);
+  }
+
     return (
         <Fragment>
             <MetaTags>
@@ -309,7 +343,7 @@ const ShopGridStandard = ({location, products}) => {
                               <h4 className="pro-sidebar-title">Search </h4>
                               <div className="pro-sidebar-search mb-50 mt-25">
                                 <form className="pro-sidebar-search-form" action="#">
-                                  <input type="text" placeholder="Search here..." onChange={(e) => setsearchFilter(e.target.value)}/>
+                                  <input type="text" placeholder="Search here..." onChange={(e) => searchFilterHandler(e.target.value)}/>
                                   <button onClick={searchResultFilter}> 
                                     <i className="pe-7s-search" />
                                   </button>
@@ -344,8 +378,9 @@ const ShopGridStandard = ({location, products}) => {
             <li>
               <div className="sidebar-widget-list-left">
                 <button
+                onClick={resetAllFilter} 
                 >
-                  <span className="checkmark"/> All Categories
+                  <span className="checkmark" /> All Categories
                 </button>
               </div>
             </li>
@@ -380,6 +415,8 @@ const ShopGridStandard = ({location, products}) => {
             <li>
               <div className="sidebar-widget-list-left">
                 <button
+                onClick={resetAllFilter} 
+
                 >
                   <span className="checkmark" /> All Age
                 </button>
