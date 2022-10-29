@@ -121,6 +121,14 @@ const ShopGridStandard = ({location, products}) => {
         '5`3″-5`6″  - 160-168 cm',
         '5`6″-5`9″  - 168-175 cm',
     ]
+
+
+    const cycleHeight = [
+      "4'5 To 5",
+      "5'7 To 6",
+      "5' To 5'7",
+      "6' & Above",
+    ]
     
     const userAge = [
       '12+',
@@ -135,32 +143,99 @@ const ShopGridStandard = ({location, products}) => {
 
   // Filters Checklist
   const [searchFilter, setsearchFilter] = useState('');
+
+  const searchFilterHandler = (searchValue) => {
+      if(selectedProducts){
+        const searchResult = productData.filter((product) => {
+          if(product == ""){
+            return product
+          }
+          else if(product.name.toLowerCase().includes(searchValue.toLowerCase())){
+            return product
+          }
+        });
+        setselectedProducts(searchResult)        
+      }
+
+      else{
+        const searchResult = productData.filter((product) => {
+          if(product == ""){
+            return product
+          }
+          else if(product.name.toLowerCase().includes(searchValue.toLowerCase())){
+            return product
+          }
+        setselectedProducts(searchResult)        
+
+      })
+  }
+  }
   const [chooseGender, setchooseGender] = useState('');
   const [categoryPckList, setcategoryPckList] = useState(false);
   const [agePickList, setagePickList] = useState(false);
+
+
+
+  // *? Working with Filters ****************************************
+
+    const [refreshStatus, setrefreshStatus] = useState(false);
+    const [categoryFilterStatus, setcategoryFilterStatus] = useState(false);
+    const [ageFilterStatus, setageFilterStatus] = useState(false);
+
+
+    const [rememberCategory, setrememberCategory] = useState('');
+    const [rememberAge, setrememberAge] = useState('');
+  // *? **************************************************************
   const selectedCategory = (name, index) => {
     console.log(name)
     setcategoryFilterPickIndex(index)
+    setcategoryFilterStatus(true)
+    setrememberCategory(name)
+    if(selectedProducts){
+    if(rememberAge){
+        console.log('Remember Age: ', rememberAge, "Remember Category: ", name.name);
+        let selectedPro = productData.filter((p) => p.age === rememberAge && p.mainCategory === name.name);
+        console.log('Ctaegory Data - ', selectedPro);
+        setselectedProducts(selectedPro)
+      }else{
+        let selectedPro = productData.filter((p) => p.mainCategory === name.name);
+        setselectedProducts(selectedPro);
+        setcategoryPckList(true);
+    }
+  }
+  else{
     let selectedPro = productData.filter((p) => p.mainCategory === name.name);
-    console.log(productData)
-    console.log('selectedPro -> /all/cycle', selectedPro);
     setselectedProducts(selectedPro);
-    setcategoryPckList(true)
+    setcategoryPckList(true);
+  }
   }
   const selectedAge = (age, index) => {
     // console.log(age);
     setageFilterPickIndex(index)
     setagePickList(true);
+    setrememberAge(age)
     if(categoryData){
-      let selectedAge = selectedProducts.filter((p) => p.age === age);
+      
+      if(rememberCategory){
+        console.log('CategorData && RemenberCategory');
+        let selectedPro = productData.filter((p) => p.mainCategory === rememberCategory.name);
+        console.log(rememberCategory)
+        let selectedAge = selectedPro.filter((p) => p.age === age);
+        console.log(selectedAge)
+        setselectedProducts(selectedAge);
+        
+        }
+        else{
+          let selectedAge = selectedProducts.filter((p) => p.age === age);
       setselectedProducts(selectedAge);
+        }
     }
     else{
       let selectedAge = productData.filter((p) => p.age === age);
       setselectedProducts(selectedAge);
     }
-    
   } 
+
 
   const selectGender =  (gender) => {
     console.log(gender)
@@ -227,9 +302,18 @@ const ShopGridStandard = ({location, products}) => {
   //     }
   // }
 
+
+
   //** */
 
   // ------------------------
+
+
+  const resetAllFilter = () => {
+    setrememberAge('');
+    setrememberCategory('');
+    setselectedProducts(productData);
+  }
 
     return (
         <Fragment>
@@ -259,7 +343,7 @@ const ShopGridStandard = ({location, products}) => {
                               <h4 className="pro-sidebar-title">Search </h4>
                               <div className="pro-sidebar-search mb-50 mt-25">
                                 <form className="pro-sidebar-search-form" action="#">
-                                  <input type="text" placeholder="Search here..." onChange={(e) => setsearchFilter(e.target.value)}/>
+                                  <input type="text" placeholder="Search here..." onChange={(e) => searchFilterHandler(e.target.value)}/>
                                   <button onClick={searchResultFilter}> 
                                     <i className="pe-7s-search" />
                                   </button>
@@ -294,8 +378,9 @@ const ShopGridStandard = ({location, products}) => {
             <li>
               <div className="sidebar-widget-list-left">
                 <button
+                onClick={resetAllFilter} 
                 >
-                  <span className="checkmark"/> All Categories
+                  <span className="checkmark" /> All Categories
                 </button>
               </div>
             </li>
@@ -319,12 +404,7 @@ const ShopGridStandard = ({location, products}) => {
 
           </p>
         )
-
         }
-        
-        
-       
-        
       </div>
       </div>
       <div className="sidebar-widget" style={{ marginTop:25 }}>
@@ -335,6 +415,8 @@ const ShopGridStandard = ({location, products}) => {
             <li>
               <div className="sidebar-widget-list-left">
                 <button
+                onClick={resetAllFilter} 
+
                 >
                   <span className="checkmark" /> All Age
                 </button>
@@ -360,12 +442,7 @@ const ShopGridStandard = ({location, products}) => {
 
           </p>
         )
-
         }
-        
-        
-       
-        
       </div>
       </div>
       </>
@@ -381,7 +458,51 @@ const ShopGridStandard = ({location, products}) => {
       {/* <ShopSize sizes={uniqueSizes} getSortParams={getSortParams} /> */}
       <>
       <div className="sidebar-widget mt-40">
-      <h4 className="pro-sidebar-title">Size </h4>
+      <h4 className="pro-sidebar-title">Height</h4>
+      <div className="sidebar-widget-list mt-20">
+        {cycleHeight ? (
+            <ul>
+            <li>
+              <div className="sidebar-widget-list-left">
+                <button
+                  onClick={e => {
+                    getSortParams("size", "");
+                    setActiveSort(e);
+                  }}
+                >
+                  <span className="checkmark" /> All Height{" "}
+                </button>
+              </div>
+            </li>
+            {cycleHeight.map((size, key) => {
+              return (
+                <li key={key}>
+                  <div className="sidebar-widget-list-left">
+                    <button
+                      className="text-uppercase"
+                      onClick={e => {
+                        getSortParams("size", size);
+                        setActiveSort(e);
+                      }}
+                    >
+                      {" "}
+                      <span className="checkmark" />
+                      {size}{" "}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          "No sizes found"
+        )
+        }
+       
+      </div>
+    </div>
+      <div className="sidebar-widget mt-40">
+      <h4 className="pro-sidebar-title">Size</h4>
       <div className="sidebar-widget-list mt-20">
         {cycleSize ? (
             <ul>

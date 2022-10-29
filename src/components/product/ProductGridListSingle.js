@@ -58,11 +58,15 @@ const ProductGridListSingle = ({
             {product.disPrice || product.new ? (
               <div className="product-img-badges">
                 {product.disPrice ? (
-                  <span className="pink">-{product.disPrice}%</span>
+                  <>
+                  <span className="pink">-{product.main}</span>
+                  <span className="pink">-{product.age}</span>
+
+                  </>
                 ) : (
                   ""
                 )}
-                {product.new ? <span className="purple">New</span> : ""}
+                {product.new ? <span className="purple">{product.mainCategory}</span> : ""}
               </div>
             ) : (
               ""
